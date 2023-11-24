@@ -1,0 +1,17 @@
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\bin\Debug\net6.0-windows\FinalPaint.exe
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\bin\Debug\net6.0-windows\FinalPaint.deps.json
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\bin\Debug\net6.0-windows\FinalPaint.runtimeconfig.json
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\bin\Debug\net6.0-windows\FinalPaint.dll
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\bin\Debug\net6.0-windows\FinalPaint.pdb
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.PaintApp.resources
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.csproj.GenerateResource.cache
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.AssemblyInfoInputs.cache
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.AssemblyInfo.cs
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.csproj.CoreCompileInputs.cache
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.dll
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\refint\FinalPaint.dll
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.pdb
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.genruntimeconfig.cache
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\ref\FinalPaint.dll
+C:\Users\nicol\source\repos\ProgramareVisuala\FinalPaint\obj\Debug\net6.0-windows\FinalPaint.Properties.Resources.resources
