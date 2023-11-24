@@ -42,6 +42,8 @@
             LineBtn = new Button();
             EllipseBtn = new Button();
             RectangleBtn = new Button();
+            Triangle = new Button();
+            RightTriangleBtn = new Button();
             ShapeLabel = new Label();
             flowLayoutPanel6 = new FlowLayoutPanel();
             black = new Label();
@@ -226,10 +228,12 @@
             flowLayoutPanel5.Controls.Add(LineBtn);
             flowLayoutPanel5.Controls.Add(EllipseBtn);
             flowLayoutPanel5.Controls.Add(RectangleBtn);
+            flowLayoutPanel5.Controls.Add(Triangle);
+            flowLayoutPanel5.Controls.Add(RightTriangleBtn);
             flowLayoutPanel5.Controls.Add(ShapeLabel);
             flowLayoutPanel5.Location = new Point(426, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Padding = new Padding(17, 0, 0, 0);
+            flowLayoutPanel5.Padding = new Padding(15, 0, 15, 0);
             flowLayoutPanel5.Size = new Size(240, 125);
             flowLayoutPanel5.TabIndex = 8;
             // 
@@ -243,8 +247,8 @@
             LineBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatStyle = FlatStyle.Flat;
-            LineBtn.Location = new Point(57, 30);
-            LineBtn.Margin = new Padding(40, 30, 3, 3);
+            LineBtn.Location = new Point(15, 30);
+            LineBtn.Margin = new Padding(0, 30, 3, 3);
             LineBtn.Name = "LineBtn";
             LineBtn.Size = new Size(36, 30);
             LineBtn.TabIndex = 13;
@@ -262,7 +266,7 @@
             EllipseBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatStyle = FlatStyle.Flat;
-            EllipseBtn.Location = new Point(99, 30);
+            EllipseBtn.Location = new Point(57, 30);
             EllipseBtn.Margin = new Padding(3, 30, 3, 3);
             EllipseBtn.Name = "EllipseBtn";
             EllipseBtn.Size = new Size(36, 30);
@@ -281,7 +285,7 @@
             RectangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RectangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RectangleBtn.FlatStyle = FlatStyle.Flat;
-            RectangleBtn.Location = new Point(141, 30);
+            RectangleBtn.Location = new Point(99, 30);
             RectangleBtn.Margin = new Padding(3, 30, 3, 3);
             RectangleBtn.Name = "RectangleBtn";
             RectangleBtn.Size = new Size(36, 30);
@@ -290,12 +294,50 @@
             RectangleBtn.UseVisualStyleBackColor = false;
             RectangleBtn.Click += RectangleBtn_Click;
             // 
+            // Triangle
+            // 
+            Triangle.BackColor = Color.FromArgb(224, 224, 224);
+            Triangle.BackgroundImage = (Image)resources.GetObject("Triangle.BackgroundImage");
+            Triangle.BackgroundImageLayout = ImageLayout.Center;
+            Triangle.Cursor = Cursors.Hand;
+            Triangle.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            Triangle.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            Triangle.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            Triangle.FlatStyle = FlatStyle.Flat;
+            Triangle.Location = new Point(141, 30);
+            Triangle.Margin = new Padding(3, 30, 3, 3);
+            Triangle.Name = "Triangle";
+            Triangle.Size = new Size(36, 30);
+            Triangle.TabIndex = 17;
+            Triangle.Tag = "Triangle";
+            Triangle.UseVisualStyleBackColor = false;
+            Triangle.Click += Triangle_Click;
+            // 
+            // RightTriangleBtn
+            // 
+            RightTriangleBtn.BackColor = Color.FromArgb(224, 224, 224);
+            RightTriangleBtn.BackgroundImage = (Image)resources.GetObject("RightTriangleBtn.BackgroundImage");
+            RightTriangleBtn.BackgroundImageLayout = ImageLayout.Center;
+            RightTriangleBtn.Cursor = Cursors.Hand;
+            RightTriangleBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            RightTriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            RightTriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            RightTriangleBtn.FlatStyle = FlatStyle.Flat;
+            RightTriangleBtn.Location = new Point(183, 30);
+            RightTriangleBtn.Margin = new Padding(3, 30, 3, 3);
+            RightTriangleBtn.Name = "RightTriangleBtn";
+            RightTriangleBtn.Size = new Size(36, 30);
+            RightTriangleBtn.TabIndex = 16;
+            RightTriangleBtn.Tag = "RightTriangle";
+            RightTriangleBtn.UseVisualStyleBackColor = false;
+            RightTriangleBtn.Click += RightTriangleBtn_Click;
+            // 
             // ShapeLabel
             // 
             ShapeLabel.AutoSize = true;
             ShapeLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            ShapeLabel.Location = new Point(77, 77);
-            ShapeLabel.Margin = new Padding(60, 14, 0, 0);
+            ShapeLabel.Location = new Point(75, 83);
+            ShapeLabel.Margin = new Padding(60, 20, 0, 0);
             ShapeLabel.Name = "ShapeLabel";
             ShapeLabel.Size = new Size(86, 30);
             ShapeLabel.TabIndex = 12;
@@ -629,8 +671,8 @@
             // ColorLabel
             // 
             ColorLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            ColorLabel.Location = new Point(229, 91);
-            ColorLabel.Margin = new Padding(137, 11, 3, 0);
+            ColorLabel.Location = new Point(229, 87);
+            ColorLabel.Margin = new Padding(137, 7, 3, 0);
             ColorLabel.Name = "ColorLabel";
             ColorLabel.Size = new Size(78, 31);
             ColorLabel.TabIndex = 10;
@@ -812,5 +854,7 @@
         private Button SaveBtn;
         private Label label1;
         private Label currentColor;
+        private Button RightTriangleBtn;
+        private Button Triangle;
     }
 }

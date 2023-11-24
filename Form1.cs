@@ -20,11 +20,11 @@ namespace FinalPaint
             Board.Image = bmp;
 
             color = Color.Black;
-            size = pencilSize = tempPencilSize = 1;
+            size = pencilSize = 1;
             sizeInput.Maximum = 10;
             Tool = Tools.Pencil;
 
-            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, RectangleBtn, EllipseBtn, FillBtn };
+            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, RectangleBtn, EllipseBtn, FillBtn, Triangle, RightTriangleBtn };
 
             colors = new Control[] {
             black,
@@ -56,8 +56,9 @@ namespace FinalPaint
       };
 
             PencilBtn.BackColor = Color.FromArgb(192, 255, 255);
-            SetCursor(Properties.Resources.icons8_pencil_30);
-
+            Board.Cursor = GetCursor(Properties.Resources.icons8_pencil_30);
+            sampleTools = new Tools[] { Tools.Pencil, Tools.Eraser };
+            fillTools = new Tools[] { Tools.Line, Tools.Rectangle, Tools.Ellipse, Tools.Triangle, Tools.RightTriangle };
 
             p = new Pen(color, pencilSize);
         }
@@ -69,9 +70,11 @@ namespace FinalPaint
         Control[] colors;
         Point px, py;
         Tools Tool;
-        int pencilSize, tempPencilSize;
+        int pencilSize;
         int size;
         Pen p;
+        Tools[] sampleTools;
+        Tools[] fillTools;
         int x, y, cX, cY;
         bool isDrawing = false;
 
@@ -90,7 +93,8 @@ namespace FinalPaint
                 px = e.Location;
 
 
-                if (Tool == Tools.Pencil || Tool == Tools.Eraser)
+
+                if (Array.Exists(sampleTools, IsEqualTool))
                 {
                     int size = Tool == Tools.Pencil ? pencilSize : this.size;
 
@@ -113,15 +117,21 @@ namespace FinalPaint
 
         }
 
+        private bool IsEqualTool(Tools tool)
+        {
+            return Tool == tool;
+        }
+
         private void Board_MouseUp(object sender, MouseEventArgs e)
         {
             isDrawing = false;
 
 
-
-
-            if (Tool == Tools.Line || Tool == Tools.Rectangle || Tool == Tools.Ellipse)
+            if (Array.Exists(fillTools, IsEqualTool))
+            {
                 new ToolControl(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g).Draw();
+
+            }
         }
 
 
@@ -134,76 +144,77 @@ namespace FinalPaint
             sizeInput.Value = size;
         }
 
-        private void PencilBtn_Click(object sender, EventArgs e)
+
+        private void ChangeTool(Tools tool, Cursor cursor)
+        {
+            Tool = tool;
+            SetActiveTool();
+            Board.Cursor = cursor;
+        }
+
+        private void RightTriangleBtn_Click(object sender, EventArgs e)
         {
 
-            Tool = Tools.Pencil;
-            SetActiveTool();
-
-            sizeInput.Maximum = 10;
-            sizeInput.Value = pencilSize;
-
-            SetCursor(Properties.Resources.icons8_pencil_30);
+            ChangeTool(Tools.RightTriangle, Cursors.Cross);
+            ChangeSize();
 
         }
 
+        private void PencilBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Pencil, GetCursor(Properties.Resources.icons8_pencil_30));
+            sizeInput.Maximum = 10;
+            sizeInput.Value = pencilSize;
 
+        }
 
         private void EraserBtn_Click(object sender, EventArgs e)
         {
+            ChangeTool(Tools.Eraser, GetCursor(Properties.Resources.icons8_eraser_30));
             ChangeSize();
-            Tool = Tools.Eraser;
-            SetActiveTool();
-            SetCursor(Properties.Resources.icons8_eraser_30);
-
         }
 
         private void EllipseBtn_Click(object sender, EventArgs e)
         {
+            ChangeTool(Tools.Ellipse, Cursors.Cross);
             ChangeSize();
-            Tool = Tools.Ellipse;
-            SetActiveTool();
-            Board.Cursor = Cursors.Cross;
-
-
         }
 
         private void RectangleBtn_Click(object sender, EventArgs e)
         {
+            ChangeTool(Tools.Rectangle, Cursors.Cross);
             ChangeSize();
-            Tool = Tools.Rectangle;
-            SetActiveTool();
-            Board.Cursor = Cursors.Cross;
-
         }
 
         private void LineBtn_Click(object sender, EventArgs e)
         {
+            ChangeTool(Tools.Line, Cursors.Cross);
             ChangeSize();
-            Tool = Tools.Line;
-            SetActiveTool();
-            Board.Cursor = Cursors.Cross;
         }
 
         private void FillBtn_Click(object sender, EventArgs e)
         {
+            ChangeTool(Tools.Fill, GetCursor(Properties.Resources.icons8_fill_color_30));
             ChangeSize();
-            Tool = Tools.Fill;
-            SetActiveTool();
-            SetCursor(Properties.Resources.icons8_fill_color_30);
 
         }
 
-        private void SetCursor(Bitmap cursor)
+        private void Triangle_Click(object sender, EventArgs e)
         {
-            Board.Cursor = new Cursor(cursor.GetHicon());
+            ChangeTool(Tools.Triangle, Cursors.Cross);
+            ChangeSize();
+        }
+
+        private Cursor GetCursor(Bitmap cursor)
+        {
+            return new Cursor(cursor.GetHicon());
         }
 
         private void Board_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
 
-            if (isDrawing && (Tool == Tools.Line || Tool == Tools.Rectangle || Tool == Tools.Ellipse))
+            if (isDrawing && Array.Exists(fillTools, IsEqualTool))
             {
                 new ToolControl(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g).Draw();
             }
@@ -294,17 +305,19 @@ namespace FinalPaint
 
         private void PaintApp_Leave(object sender, CancelEventArgs e)
         {
-            string msg = "Do you want to save before closing?";
-            DialogResult result = MessageBox.Show(msg, "Close Confirmation",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            /*  string msg = "Do you want to save before closing?";
+              DialogResult result = MessageBox.Show(msg, "Close Confirmation",
+                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            if (result == DialogResult.Yes)
-            {
-                SaveBtn_Click(sender, e);
+              if (result == DialogResult.Yes)
+              {
+                  SaveBtn_Click(sender, e);
 
-            }
-            e.Cancel = false;
+              }
+              e.Cancel = false;*/
 
         }
+
+
     }
 }

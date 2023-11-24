@@ -117,17 +117,37 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="RectangleBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAALBJREFUWEft1j0KwkAQhuGt1Vuop7AW1F7wNtbiEfxpBY+iB1F7rfV9U5qQapek
+        DAAACwwBP0AiyAAAALBJREFUWEft1j0KwkAQhuGt1Vuop7AW1F7wNtbiEfxpBY+iB1F7rfV9U5qQapek
         mA+eYskwO7BFJkUifcwUe1wzumCLCVqzwgffQt5YojEDvGDhARusM7HXEfZ+YoRaZrDgVp3K5A7vmFen
         vzipH32zUrG3d3hXLTFADBADxAAxQAzQ+QCd/45dSFwWLDgh90Jyhr0fGKIxrmSuTRaWYO8FWuPiuIPv
         lZM9x4hE+pSUfoHupX98ZtsfAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="Triangle.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAACxIAAAsSAdLdfvwAAAGESURBVFhH7ZY7SxxhGEZXgxDvrYgQvJZpBMEiICj4B7SJ
+        jQloo71opU0U9A9YmiYW2ugPsEgREBGxsBVFNIE0It4KL+fADMjCspe5bOEcODA8+83zzuzsN2wuI+M9
+        8Tmw6uwFVpVxfAkcM6gGH/EUwws5xwZMnQX0Av4HemyWKm14jQ6fwdng+AbbMTV+ooNPsA4/4HGQbWAq
+        9OMTOnTUIGAYzZ5xwCBJavA3OnDHII9d9LM/6NrEmEAHPWKfQR7d+ICu+WqQBPV4hg5ZNSjAGrrmAhsN
+        4mYJHfAPWw0K0IxX6NpFgzjpwFu0fMqgCNPo2jv8ZBAXm2jxEbpVi1GLB+g5vwziYBDdkpaOGJTIEHqO
+        fjGIgne2j5ZtGZTJNnruIdpVMd/RIrdrj0GZdOI92vHNoBL89V+iJT8MKmQZ7fiLLQblsoKRCgKaMLwh
+        L6osujD8SicNIuJjsctH3GtQKuGPzHfHPM5F1I7wPWR3SbzddklZ0mvAPzrrCeuMjIyMCORyrxIujHL0
+        4qVpAAAAAElFTkSuQmCC
+</value>
+  </data>
+  <data name="RightTriangleBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7MK6iAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DQAACw0B7QfALAAAANdJREFUSEvF1jsKwkAUheFsyRUoNj4Kl2lnIZbaaCe4DksLG7XS84sTgqiZydw7
+        /nAgD8hHUqX6dxNtqQ2fZwXbanftqk25UKq9Bsxu2kwrUhMuigf4qPG5OS7y2QO80Uba5XXu/uZNmIrh
+        7zAVwT/B5I5/g8kV/wWTG94GkwseA5M5HguTKZ4CkxmeCtNYy8a7wJSNd4UpC8+BqTOeC1Mn3AKmZNwK
+        piTcEqZo3BqmKNwDplY8wGftYLyTxrMZP5ADrW6nhZvem2t1fW2lrZ230Hrav6qqByXp0V9wOuOvAAAA
+        AElFTkSuQmCC
 </value>
   </data>
   <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">

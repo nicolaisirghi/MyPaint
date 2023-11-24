@@ -53,6 +53,12 @@
                 case Tools.Ellipse:
                     new Ellipse(P, Tools.Ellipse, Size, Color, Start, End, G).Draw();
                     return;
+                case Tools.Triangle:
+                    new Triangle(P, Tools.Triangle, Size, Color, Start, End, G).Draw();
+                    return;
+                case Tools.RightTriangle:
+                    new Triangle(P, Tools.RightTriangle, Size, Color, Start, End, G).Draw();
+                    return;
                 default:
                     throw new NotImplementedException();
 

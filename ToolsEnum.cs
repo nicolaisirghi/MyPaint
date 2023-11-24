@@ -14,5 +14,7 @@ namespace FinalPaint
         Line = 4,
         Ellipse = 5,
         Rectangle = 6,
+        Triangle = 7,
+        RightTriangle = 8,
     }
 }
