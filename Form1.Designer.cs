@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaintApp));
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
             PencilBtn = new Button();
@@ -245,7 +246,7 @@
             LineBtn.Location = new Point(57, 30);
             LineBtn.Margin = new Padding(40, 30, 3, 3);
             LineBtn.Name = "LineBtn";
-            LineBtn.Size = new Size(36, 29);
+            LineBtn.Size = new Size(36, 30);
             LineBtn.TabIndex = 13;
             LineBtn.Tag = "Line";
             LineBtn.UseVisualStyleBackColor = false;
@@ -264,7 +265,7 @@
             EllipseBtn.Location = new Point(99, 30);
             EllipseBtn.Margin = new Padding(3, 30, 3, 3);
             EllipseBtn.Name = "EllipseBtn";
-            EllipseBtn.Size = new Size(36, 37);
+            EllipseBtn.Size = new Size(36, 30);
             EllipseBtn.TabIndex = 15;
             EllipseBtn.Tag = "Ellipse";
             EllipseBtn.UseVisualStyleBackColor = false;
@@ -273,7 +274,7 @@
             // RectangleBtn
             // 
             RectangleBtn.BackColor = Color.FromArgb(224, 224, 224);
-            RectangleBtn.BackgroundImage = Properties.Resources.icons8_rectangle_30;
+            RectangleBtn.BackgroundImage = (Image)resources.GetObject("RectangleBtn.BackgroundImage");
             RectangleBtn.BackgroundImageLayout = ImageLayout.Center;
             RectangleBtn.Cursor = Cursors.Hand;
             RectangleBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
@@ -283,7 +284,7 @@
             RectangleBtn.Location = new Point(141, 30);
             RectangleBtn.Margin = new Padding(3, 30, 3, 3);
             RectangleBtn.Name = "RectangleBtn";
-            RectangleBtn.Size = new Size(36, 29);
+            RectangleBtn.Size = new Size(36, 30);
             RectangleBtn.TabIndex = 14;
             RectangleBtn.Tag = "Rectangle";
             RectangleBtn.UseVisualStyleBackColor = false;
@@ -293,7 +294,7 @@
             // 
             ShapeLabel.AutoSize = true;
             ShapeLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            ShapeLabel.Location = new Point(77, 84);
+            ShapeLabel.Location = new Point(77, 77);
             ShapeLabel.Margin = new Padding(60, 14, 0, 0);
             ShapeLabel.Name = "ShapeLabel";
             ShapeLabel.Size = new Size(86, 30);

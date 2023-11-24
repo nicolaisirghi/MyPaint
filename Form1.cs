@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Drawing.Imaging;
 
 namespace FinalPaint
@@ -10,6 +11,9 @@ namespace FinalPaint
             bmp = new Bitmap(Board.Width, Board.Height);
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
+            this.Closing += PaintApp_Leave;
+            this.Name = "Paint";
+            this.Text = "Paint";
 
             g = Graphics.FromImage(bmp);
             g.Clear(Color.White);
@@ -52,6 +56,7 @@ namespace FinalPaint
       };
 
             PencilBtn.BackColor = Color.FromArgb(192, 255, 255);
+            SetCursor(Properties.Resources.icons8_pencil_30);
 
 
             p = new Pen(color, pencilSize);
@@ -112,6 +117,9 @@ namespace FinalPaint
         {
             isDrawing = false;
 
+
+
+
             if (Tool == Tools.Line || Tool == Tools.Rectangle || Tool == Tools.Ellipse)
                 new ToolControl(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g).Draw();
         }
@@ -135,6 +143,8 @@ namespace FinalPaint
             sizeInput.Maximum = 10;
             sizeInput.Value = pencilSize;
 
+            SetCursor(Properties.Resources.icons8_pencil_30);
+
         }
 
 
@@ -144,6 +154,7 @@ namespace FinalPaint
             ChangeSize();
             Tool = Tools.Eraser;
             SetActiveTool();
+            SetCursor(Properties.Resources.icons8_eraser_30);
 
         }
 
@@ -152,6 +163,7 @@ namespace FinalPaint
             ChangeSize();
             Tool = Tools.Ellipse;
             SetActiveTool();
+            Board.Cursor = Cursors.Cross;
 
 
         }
@@ -161,6 +173,7 @@ namespace FinalPaint
             ChangeSize();
             Tool = Tools.Rectangle;
             SetActiveTool();
+            Board.Cursor = Cursors.Cross;
 
         }
 
@@ -169,6 +182,7 @@ namespace FinalPaint
             ChangeSize();
             Tool = Tools.Line;
             SetActiveTool();
+            Board.Cursor = Cursors.Cross;
         }
 
         private void FillBtn_Click(object sender, EventArgs e)
@@ -176,7 +190,13 @@ namespace FinalPaint
             ChangeSize();
             Tool = Tools.Fill;
             SetActiveTool();
+            SetCursor(Properties.Resources.icons8_fill_color_30);
 
+        }
+
+        private void SetCursor(Bitmap cursor)
+        {
+            Board.Cursor = new Cursor(cursor.GetHicon());
         }
 
         private void Board_Paint(object sender, PaintEventArgs e)
@@ -211,7 +231,6 @@ namespace FinalPaint
             }
 
             else
-
             {
                 size = (int)sizeInput.Value;
             }
@@ -260,6 +279,7 @@ namespace FinalPaint
 
                 Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
                 bmp.Save(sfd.FileName, ImageFormat.Jpeg);
+                MessageBox.Show("Image Saved Successfully");
             }
 
         }
@@ -271,5 +291,20 @@ namespace FinalPaint
         }
 
 
+
+        private void PaintApp_Leave(object sender, CancelEventArgs e)
+        {
+            string msg = "Do you want to save before closing?";
+            DialogResult result = MessageBox.Show(msg, "Close Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (result == DialogResult.Yes)
+            {
+                SaveBtn_Click(sender, e);
+
+            }
+            e.Cancel = false;
+
+        }
     }
 }
