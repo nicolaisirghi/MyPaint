@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace FinalPaint
+﻿namespace FinalPaint
 {
     enum Tools
     {
@@ -16,5 +10,10 @@ namespace FinalPaint
         Rectangle = 6,
         Triangle = 7,
         RightTriangle = 8,
+        Pentagon = 9,
+        Hexagon = 10,
+        Star = 11,
+        Romb = 12,
+        Trapez = 13,
     }
 }

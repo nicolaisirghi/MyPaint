@@ -24,7 +24,7 @@ namespace FinalPaint
             sizeInput.Maximum = 10;
             Tool = Tools.Pencil;
 
-            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, RectangleBtn, EllipseBtn, FillBtn, Triangle, RightTriangleBtn };
+            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, RectangleBtn, EllipseBtn, FillBtn, TriangleBtn, RightTriangleBtn, PentagonBtn, HexagonBtn, StarBtn, RombBtn, TrapezBtn };
 
             colors = new Control[] {
             black,
@@ -58,7 +58,7 @@ namespace FinalPaint
             PencilBtn.BackColor = Color.FromArgb(192, 255, 255);
             Board.Cursor = GetCursor(Properties.Resources.icons8_pencil_30);
             sampleTools = new Tools[] { Tools.Pencil, Tools.Eraser };
-            fillTools = new Tools[] { Tools.Line, Tools.Rectangle, Tools.Ellipse, Tools.Triangle, Tools.RightTriangle };
+            fillTools = new Tools[] { Tools.Line, Tools.Rectangle, Tools.Ellipse, Tools.Triangle, Tools.RightTriangle, Tools.Pentagon, Tools.Hexagon, Tools.Star, Tools.Romb, Tools.Trapez };
 
             p = new Pen(color, pencilSize);
         }
@@ -318,6 +318,35 @@ namespace FinalPaint
 
         }
 
+        private void PentagonBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Pentagon, Cursors.Cross);
+            ChangeSize();
+        }
 
+        private void HexagonBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Hexagon, Cursors.Cross);
+            ChangeSize();
+        }
+
+        private void StarBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Star, Cursors.Cross);
+            ChangeSize();
+
+        }
+
+        private void RombBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Romb, Cursors.Cross);
+            ChangeSize();
+        }
+
+        private void HeartBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Trapez, Cursors.Cross);
+            ChangeSize();
+        }
     }
 }

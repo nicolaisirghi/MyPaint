@@ -54,10 +54,23 @@
                     new Ellipse(P, Tools.Ellipse, Size, Color, Start, End, G).Draw();
                     return;
                 case Tools.Triangle:
-                    new Triangle(P, Tools.Triangle, Size, Color, Start, End, G).Draw();
-                    return;
                 case Tools.RightTriangle:
-                    new Triangle(P, Tools.RightTriangle, Size, Color, Start, End, G).Draw();
+                    new Triangle(P, Tool, Size, Color, Start, End, G).Draw();
+                    return;
+                case Tools.Pentagon:
+                    new Pentagon(P, Tools.Pentagon, Size, Color, Start, End, G).Draw();
+                    return;
+                case Tools.Hexagon:
+                    new Hexagon(P, Tools.Hexagon, Size, Color, Start, End, G).Draw();
+                    return;
+                case Tools.Star:
+                    new Star(P, Tools.Star, Size, Color, Start, End, G).Draw();
+                    return;
+                case Tools.Romb:
+                    new Romb(P, Tools.Romb, Size, Color, Start, End, G).Draw();
+                    return;
+                case Tools.Trapez:
+                    new Trapez(P, Tools.Trapez, Size, Color, Start, End, G).Draw();
                     return;
                 default:
                     throw new NotImplementedException();

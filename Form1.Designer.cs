@@ -41,9 +41,14 @@
             flowLayoutPanel5 = new FlowLayoutPanel();
             LineBtn = new Button();
             EllipseBtn = new Button();
-            RectangleBtn = new Button();
-            Triangle = new Button();
+            TriangleBtn = new Button();
             RightTriangleBtn = new Button();
+            RectangleBtn = new Button();
+            RombBtn = new Button();
+            TrapezBtn = new Button();
+            PentagonBtn = new Button();
+            HexagonBtn = new Button();
+            StarBtn = new Button();
             ShapeLabel = new Label();
             flowLayoutPanel6 = new FlowLayoutPanel();
             black = new Label();
@@ -227,13 +232,18 @@
             flowLayoutPanel5.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel5.Controls.Add(LineBtn);
             flowLayoutPanel5.Controls.Add(EllipseBtn);
-            flowLayoutPanel5.Controls.Add(RectangleBtn);
-            flowLayoutPanel5.Controls.Add(Triangle);
+            flowLayoutPanel5.Controls.Add(TriangleBtn);
             flowLayoutPanel5.Controls.Add(RightTriangleBtn);
+            flowLayoutPanel5.Controls.Add(RectangleBtn);
+            flowLayoutPanel5.Controls.Add(RombBtn);
+            flowLayoutPanel5.Controls.Add(TrapezBtn);
+            flowLayoutPanel5.Controls.Add(PentagonBtn);
+            flowLayoutPanel5.Controls.Add(HexagonBtn);
+            flowLayoutPanel5.Controls.Add(StarBtn);
             flowLayoutPanel5.Controls.Add(ShapeLabel);
             flowLayoutPanel5.Location = new Point(426, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
-            flowLayoutPanel5.Padding = new Padding(15, 0, 15, 0);
+            flowLayoutPanel5.Padding = new Padding(15, 0, 12, 0);
             flowLayoutPanel5.Size = new Size(240, 125);
             flowLayoutPanel5.TabIndex = 8;
             // 
@@ -247,10 +257,10 @@
             LineBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             LineBtn.FlatStyle = FlatStyle.Flat;
-            LineBtn.Location = new Point(15, 30);
-            LineBtn.Margin = new Padding(0, 30, 3, 3);
+            LineBtn.Location = new Point(15, 5);
+            LineBtn.Margin = new Padding(0, 5, 3, 0);
             LineBtn.Name = "LineBtn";
-            LineBtn.Size = new Size(36, 30);
+            LineBtn.Size = new Size(36, 32);
             LineBtn.TabIndex = 13;
             LineBtn.Tag = "Line";
             LineBtn.UseVisualStyleBackColor = false;
@@ -266,52 +276,33 @@
             EllipseBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EllipseBtn.FlatStyle = FlatStyle.Flat;
-            EllipseBtn.Location = new Point(57, 30);
-            EllipseBtn.Margin = new Padding(3, 30, 3, 3);
+            EllipseBtn.Location = new Point(58, 5);
+            EllipseBtn.Margin = new Padding(4, 5, 3, 0);
             EllipseBtn.Name = "EllipseBtn";
-            EllipseBtn.Size = new Size(36, 30);
+            EllipseBtn.Size = new Size(36, 32);
             EllipseBtn.TabIndex = 15;
             EllipseBtn.Tag = "Ellipse";
             EllipseBtn.UseVisualStyleBackColor = false;
             EllipseBtn.Click += EllipseBtn_Click;
             // 
-            // RectangleBtn
+            // TriangleBtn
             // 
-            RectangleBtn.BackColor = Color.FromArgb(224, 224, 224);
-            RectangleBtn.BackgroundImage = (Image)resources.GetObject("RectangleBtn.BackgroundImage");
-            RectangleBtn.BackgroundImageLayout = ImageLayout.Center;
-            RectangleBtn.Cursor = Cursors.Hand;
-            RectangleBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            RectangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
-            RectangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
-            RectangleBtn.FlatStyle = FlatStyle.Flat;
-            RectangleBtn.Location = new Point(99, 30);
-            RectangleBtn.Margin = new Padding(3, 30, 3, 3);
-            RectangleBtn.Name = "RectangleBtn";
-            RectangleBtn.Size = new Size(36, 30);
-            RectangleBtn.TabIndex = 14;
-            RectangleBtn.Tag = "Rectangle";
-            RectangleBtn.UseVisualStyleBackColor = false;
-            RectangleBtn.Click += RectangleBtn_Click;
-            // 
-            // Triangle
-            // 
-            Triangle.BackColor = Color.FromArgb(224, 224, 224);
-            Triangle.BackgroundImage = (Image)resources.GetObject("Triangle.BackgroundImage");
-            Triangle.BackgroundImageLayout = ImageLayout.Center;
-            Triangle.Cursor = Cursors.Hand;
-            Triangle.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
-            Triangle.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
-            Triangle.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
-            Triangle.FlatStyle = FlatStyle.Flat;
-            Triangle.Location = new Point(141, 30);
-            Triangle.Margin = new Padding(3, 30, 3, 3);
-            Triangle.Name = "Triangle";
-            Triangle.Size = new Size(36, 30);
-            Triangle.TabIndex = 17;
-            Triangle.Tag = "Triangle";
-            Triangle.UseVisualStyleBackColor = false;
-            Triangle.Click += Triangle_Click;
+            TriangleBtn.BackColor = Color.FromArgb(224, 224, 224);
+            TriangleBtn.BackgroundImage = (Image)resources.GetObject("TriangleBtn.BackgroundImage");
+            TriangleBtn.BackgroundImageLayout = ImageLayout.Center;
+            TriangleBtn.Cursor = Cursors.Hand;
+            TriangleBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            TriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            TriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            TriangleBtn.FlatStyle = FlatStyle.Flat;
+            TriangleBtn.Location = new Point(102, 5);
+            TriangleBtn.Margin = new Padding(5, 5, 3, 0);
+            TriangleBtn.Name = "TriangleBtn";
+            TriangleBtn.Size = new Size(36, 32);
+            TriangleBtn.TabIndex = 17;
+            TriangleBtn.Tag = "Triangle";
+            TriangleBtn.UseVisualStyleBackColor = false;
+            TriangleBtn.Click += Triangle_Click;
             // 
             // RightTriangleBtn
             // 
@@ -323,21 +314,135 @@
             RightTriangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             RightTriangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             RightTriangleBtn.FlatStyle = FlatStyle.Flat;
-            RightTriangleBtn.Location = new Point(183, 30);
-            RightTriangleBtn.Margin = new Padding(3, 30, 3, 3);
+            RightTriangleBtn.Location = new Point(144, 5);
+            RightTriangleBtn.Margin = new Padding(3, 5, 3, 0);
             RightTriangleBtn.Name = "RightTriangleBtn";
-            RightTriangleBtn.Size = new Size(36, 30);
+            RightTriangleBtn.Size = new Size(36, 32);
             RightTriangleBtn.TabIndex = 16;
             RightTriangleBtn.Tag = "RightTriangle";
             RightTriangleBtn.UseVisualStyleBackColor = false;
             RightTriangleBtn.Click += RightTriangleBtn_Click;
             // 
+            // RectangleBtn
+            // 
+            RectangleBtn.BackColor = Color.FromArgb(224, 224, 224);
+            RectangleBtn.BackgroundImage = (Image)resources.GetObject("RectangleBtn.BackgroundImage");
+            RectangleBtn.BackgroundImageLayout = ImageLayout.Center;
+            RectangleBtn.Cursor = Cursors.Hand;
+            RectangleBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            RectangleBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            RectangleBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            RectangleBtn.FlatStyle = FlatStyle.Flat;
+            RectangleBtn.Location = new Point(183, 5);
+            RectangleBtn.Margin = new Padding(0, 5, 3, 0);
+            RectangleBtn.Name = "RectangleBtn";
+            RectangleBtn.Size = new Size(36, 32);
+            RectangleBtn.TabIndex = 14;
+            RectangleBtn.Tag = "Rectangle";
+            RectangleBtn.UseVisualStyleBackColor = false;
+            RectangleBtn.Click += RectangleBtn_Click;
+            // 
+            // RombBtn
+            // 
+            RombBtn.BackColor = Color.FromArgb(224, 224, 224);
+            RombBtn.BackgroundImage = (Image)resources.GetObject("RombBtn.BackgroundImage");
+            RombBtn.BackgroundImageLayout = ImageLayout.Center;
+            RombBtn.Cursor = Cursors.Hand;
+            RombBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            RombBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            RombBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            RombBtn.FlatStyle = FlatStyle.Flat;
+            RombBtn.Location = new Point(15, 42);
+            RombBtn.Margin = new Padding(0, 5, 3, 3);
+            RombBtn.Name = "RombBtn";
+            RombBtn.Size = new Size(36, 32);
+            RombBtn.TabIndex = 21;
+            RombBtn.Tag = "Romb";
+            RombBtn.UseVisualStyleBackColor = false;
+            RombBtn.Click += RombBtn_Click;
+            // 
+            // TrapezBtn
+            // 
+            TrapezBtn.BackColor = Color.FromArgb(224, 224, 224);
+            TrapezBtn.BackgroundImage = (Image)resources.GetObject("TrapezBtn.BackgroundImage");
+            TrapezBtn.BackgroundImageLayout = ImageLayout.Center;
+            TrapezBtn.Cursor = Cursors.Hand;
+            TrapezBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            TrapezBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            TrapezBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            TrapezBtn.FlatStyle = FlatStyle.Flat;
+            TrapezBtn.Location = new Point(57, 42);
+            TrapezBtn.Margin = new Padding(3, 5, 3, 3);
+            TrapezBtn.Name = "TrapezBtn";
+            TrapezBtn.Size = new Size(36, 32);
+            TrapezBtn.TabIndex = 22;
+            TrapezBtn.Tag = "Trapez";
+            TrapezBtn.UseVisualStyleBackColor = false;
+            TrapezBtn.Click += HeartBtn_Click;
+            // 
+            // PentagonBtn
+            // 
+            PentagonBtn.BackColor = Color.FromArgb(224, 224, 224);
+            PentagonBtn.BackgroundImage = (Image)resources.GetObject("PentagonBtn.BackgroundImage");
+            PentagonBtn.BackgroundImageLayout = ImageLayout.Center;
+            PentagonBtn.Cursor = Cursors.Hand;
+            PentagonBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            PentagonBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            PentagonBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            PentagonBtn.FlatStyle = FlatStyle.Flat;
+            PentagonBtn.Location = new Point(99, 42);
+            PentagonBtn.Margin = new Padding(3, 5, 3, 3);
+            PentagonBtn.Name = "PentagonBtn";
+            PentagonBtn.Size = new Size(36, 32);
+            PentagonBtn.TabIndex = 18;
+            PentagonBtn.Tag = "Pentagon";
+            PentagonBtn.UseVisualStyleBackColor = false;
+            PentagonBtn.Click += PentagonBtn_Click;
+            // 
+            // HexagonBtn
+            // 
+            HexagonBtn.BackColor = Color.FromArgb(224, 224, 224);
+            HexagonBtn.BackgroundImage = (Image)resources.GetObject("HexagonBtn.BackgroundImage");
+            HexagonBtn.BackgroundImageLayout = ImageLayout.Center;
+            HexagonBtn.Cursor = Cursors.Hand;
+            HexagonBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            HexagonBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            HexagonBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            HexagonBtn.FlatStyle = FlatStyle.Flat;
+            HexagonBtn.Location = new Point(141, 42);
+            HexagonBtn.Margin = new Padding(3, 5, 3, 3);
+            HexagonBtn.Name = "HexagonBtn";
+            HexagonBtn.Size = new Size(36, 32);
+            HexagonBtn.TabIndex = 19;
+            HexagonBtn.Tag = "Hexagon";
+            HexagonBtn.UseVisualStyleBackColor = false;
+            HexagonBtn.Click += HexagonBtn_Click;
+            // 
+            // StarBtn
+            // 
+            StarBtn.BackColor = Color.FromArgb(224, 224, 224);
+            StarBtn.BackgroundImage = (Image)resources.GetObject("StarBtn.BackgroundImage");
+            StarBtn.BackgroundImageLayout = ImageLayout.Center;
+            StarBtn.Cursor = Cursors.Hand;
+            StarBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            StarBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            StarBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            StarBtn.FlatStyle = FlatStyle.Flat;
+            StarBtn.Location = new Point(183, 42);
+            StarBtn.Margin = new Padding(3, 5, 3, 3);
+            StarBtn.Name = "StarBtn";
+            StarBtn.Size = new Size(36, 32);
+            StarBtn.TabIndex = 20;
+            StarBtn.Tag = "Star";
+            StarBtn.UseVisualStyleBackColor = false;
+            StarBtn.Click += StarBtn_Click;
+            // 
             // ShapeLabel
             // 
             ShapeLabel.AutoSize = true;
             ShapeLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            ShapeLabel.Location = new Point(75, 83);
-            ShapeLabel.Margin = new Padding(60, 20, 0, 0);
+            ShapeLabel.Location = new Point(75, 87);
+            ShapeLabel.Margin = new Padding(60, 10, 0, 0);
             ShapeLabel.Name = "ShapeLabel";
             ShapeLabel.Size = new Size(86, 30);
             ShapeLabel.TabIndex = 12;
@@ -855,6 +960,11 @@
         private Label label1;
         private Label currentColor;
         private Button RightTriangleBtn;
-        private Button Triangle;
+        private Button TriangleBtn;
+        private Button PentagonBtn;
+        private Button HexagonBtn;
+        private Button StarBtn;
+        private Button RombBtn;
+        private Button TrapezBtn;
     }
 }
