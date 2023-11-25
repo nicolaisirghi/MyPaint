@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaintApp));
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
@@ -88,6 +89,7 @@
             flowLayoutPanel2 = new FlowLayoutPanel();
             locationLabel = new Label();
             Board = new PictureBox();
+            toolTip1 = new ToolTip(components);
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
@@ -903,6 +905,9 @@
             Board.MouseMove += Board_MouseMove;
             Board.MouseUp += Board_MouseUp;
             // 
+            // toolTip1
+            // 
+            // 
             // PaintApp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -913,6 +918,7 @@
             Controls.Add(Board);
             Name = "PaintApp";
             Text = "Form1";
+            Load += PaintApp_Load;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel4.ResumeLayout(false);
@@ -989,5 +995,6 @@
         private Button RombBtn;
         private Button TrapezBtn;
         private Button DroppperBtn;
+        private ToolTip toolTip1;
     }
 }

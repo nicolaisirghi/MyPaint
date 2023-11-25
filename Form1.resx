@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>True</value>
-  </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="TriangleBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -166,7 +163,7 @@
   <data name="TrapezBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
-        DwAACw8BkvkDpQAAAX1JREFUWEftlTssBFEYRkc8CyohRCIq0WklNDToRKWhQEMoRCFKCYnQEB2dgoYG
+        DQAACw0B7QfALAAAAX1JREFUWEftlTssBFEYRkc8CyohRCIq0WklNDToRKWhQEMoRCFKCYnQEB2dgoYG
         lehUGhoU4tEpvEKQkHh93zc7K5kYM5u5dyj2JCe5p7n37j87u06WLL8wBN/gZ0zf4TDMmD14DqdjegW5
         V0aUQd58QhWPJci9ylUR6YEcX4MqHp2Qe3WrIrIKr2GuKh7F8AWuqCLAQ2/gssoMO/AO5qlCaIIcWZfK
         DKOQezaqQpiCfP1KVWaog7zApCqEA7jrLo1yCvfdZTCV8AOOq8yyALl3lSqAfshR1avM0g65d58qgHV4
@@ -221,5 +218,8 @@
   </data>
   <metadata name="label1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
   </metadata>
 </root>

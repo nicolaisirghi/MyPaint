@@ -376,5 +376,29 @@ namespace FinalPaint
         {
             ChangeTool(Tools.Dropper, GetCursor(Properties.Resources.icons8_dropper_30));
         }
+
+
+        private void PaintApp_Load(object sender, EventArgs e)
+        {
+            toolTip1.SetToolTip(this.PencilBtn, "Pencil");
+            toolTip1.SetToolTip(this.EraserBtn, "Eraser");
+            toolTip1.SetToolTip(this.LineBtn, "Line");
+            toolTip1.SetToolTip(this.RectangleBtn, "Rectangle");
+            toolTip1.SetToolTip(this.EllipseBtn, "Ellipse");
+            toolTip1.SetToolTip(this.FillBtn, "Fill");
+            toolTip1.SetToolTip(this.TriangleBtn, "Triangle");
+            toolTip1.SetToolTip(this.RightTriangleBtn, "Right Triangle");
+            toolTip1.SetToolTip(this.PentagonBtn, "Pentagon");
+            toolTip1.SetToolTip(this.HexagonBtn, "Hexagon");
+            toolTip1.SetToolTip(this.StarBtn, "Star");
+            toolTip1.SetToolTip(this.RombBtn, "Romb");
+            toolTip1.SetToolTip(this.TrapezBtn, "Trapez");
+            toolTip1.SetToolTip(this.DroppperBtn, "Dropper");
+            toolTip1.SetToolTip(this.SaveBtn, "Save");
+            toolTip1.SetToolTip(this.ResetBtn, "Reset");
+            toolTip1.SetToolTip(this.sizeInput, "Size");
+            toolTip1.SetToolTip(this.currentColor, "Color");
+            toolTip1.SetToolTip(this.customColor, "Custom Color");
+        }
     }
 }
