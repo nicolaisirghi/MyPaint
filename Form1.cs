@@ -12,6 +12,7 @@ namespace FinalPaint
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Closing += PaintApp_Leave;
+
             this.Name = "Paint";
             this.Text = "Paint";
 
@@ -23,37 +24,10 @@ namespace FinalPaint
             size = pencilSize = 1;
             sizeInput.Maximum = 10;
             Tool = Tools.Pencil;
+            lastTool = Tools.Pencil;
 
             tools = new Control[] { PencilBtn, EraserBtn, LineBtn, RectangleBtn, EllipseBtn, FillBtn, TriangleBtn, RightTriangleBtn, PentagonBtn, HexagonBtn, StarBtn, RombBtn, TrapezBtn };
 
-            colors = new Control[] {
-            black,
-            white,
-            red,
-            orange,
-            yellow,
-            green,
-            blue,
-            violet,
-            brown,
-            pink,
-            peru,
-            bisque,
-            maroon,
-            coral,
-            olive,
-            gold,
-            palegreen,
-            highlight,
-            hotpink,
-            greenyellow,
-            fuchsia,
-            lightcoral,
-            indigo,
-            aquamarine,
-            turquoise,
-            midnightBlue
-      };
 
             PencilBtn.BackColor = Color.FromArgb(192, 255, 255);
             Board.Cursor = GetCursor(Properties.Resources.icons8_pencil_30);
@@ -67,15 +41,11 @@ namespace FinalPaint
         Color color;
         Graphics g;
         Control[] tools;
-        Control[] colors;
         Point px, py;
-        Tools Tool;
-        int pencilSize;
-        int size;
+        Tools Tool, lastTool;
+        int pencilSize, size, x, y, cX, cY;
         Pen p;
-        Tools[] sampleTools;
-        Tools[] fillTools;
-        int x, y, cX, cY;
+        Tools[] sampleTools, fillTools;
         bool isDrawing = false;
 
         private void Board_MouseDown(object sender, MouseEventArgs e)
@@ -84,6 +54,47 @@ namespace FinalPaint
             py = e.Location;
             cX = e.X;
             cY = e.Y;
+        }
+
+
+        private void Draw(ToolControl tool)
+        {
+            switch (tool)
+            {
+                case Line line:
+                    line.Draw();
+                    break;
+                case Eraser eraser:
+                    eraser.Draw();
+                    break;
+                case Fill fill:
+                    fill.Draw();
+                    break;
+                case Rectangle rectangle:
+                    rectangle.Draw();
+                    break;
+                case Ellipse ellipse:
+                    ellipse.Draw();
+                    break;
+                case Triangle triangle:
+                    triangle.Draw();
+                    break;
+                case Pentagon pentagon:
+                    pentagon.Draw();
+                    break;
+                case Hexagon hexagon:
+                    hexagon.Draw();
+                    break;
+                case Star star:
+                    star.Draw();
+                    break;
+                case Romb romb:
+                    romb.Draw();
+                    break;
+                case Trapez trapez:
+                    trapez.Draw();
+                    break;
+            }
         }
 
         private void Board_MouseMove(object sender, MouseEventArgs e)
@@ -98,7 +109,8 @@ namespace FinalPaint
                 {
                     int size = Tool == Tools.Pencil ? pencilSize : this.size;
 
-                    new ToolControl(p, Tool, size, color, px, py, g).Draw();
+                    ToolControl tool = Utils.GetTool(p, Tool, size, color, py, px, g);
+                    Draw(tool);
 
                 }
 
@@ -129,7 +141,8 @@ namespace FinalPaint
 
             if (Array.Exists(fillTools, IsEqualTool))
             {
-                new ToolControl(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g).Draw();
+                ToolControl tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
+                Draw(tool);
 
             }
         }
@@ -137,72 +150,102 @@ namespace FinalPaint
 
         private void ChangeSize()
         {
-            if (Tool != Tools.Pencil)
+            if (Tool == Tools.Pencil)
                 return;
+
+            if (lastTool == Tools.Pencil)
+            {
+                pencilSize = (int)sizeInput.Value;
+            }
 
             sizeInput.Maximum = 100;
             sizeInput.Value = size;
         }
 
 
-        private void ChangeTool(Tools tool, Cursor cursor)
+        private void ChangeTool(Tools tool, Cursor cursor, bool changeSize = true)
         {
+            lastTool = Tool;
             Tool = tool;
             SetActiveTool();
             Board.Cursor = cursor;
+
+            if (changeSize)
+            {
+                ChangeSize();
+            }
         }
 
         private void RightTriangleBtn_Click(object sender, EventArgs e)
         {
 
             ChangeTool(Tools.RightTriangle, Cursors.Cross);
-            ChangeSize();
 
         }
 
         private void PencilBtn_Click(object sender, EventArgs e)
         {
-            ChangeTool(Tools.Pencil, GetCursor(Properties.Resources.icons8_pencil_30));
-            sizeInput.Maximum = 10;
+            ChangeTool(Tools.Pencil, GetCursor(Properties.Resources.icons8_pencil_30), false);
             sizeInput.Value = pencilSize;
+
 
         }
 
         private void EraserBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Eraser, GetCursor(Properties.Resources.icons8_eraser_30));
-            ChangeSize();
         }
 
         private void EllipseBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Ellipse, Cursors.Cross);
-            ChangeSize();
         }
 
         private void RectangleBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Rectangle, Cursors.Cross);
-            ChangeSize();
         }
 
         private void LineBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Line, Cursors.Cross);
-            ChangeSize();
         }
 
         private void FillBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Fill, GetCursor(Properties.Resources.icons8_fill_color_30));
-            ChangeSize();
 
         }
 
         private void Triangle_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Triangle, Cursors.Cross);
-            ChangeSize();
+        }
+
+        private void PentagonBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Pentagon, Cursors.Cross);
+        }
+
+        private void HexagonBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Hexagon, Cursors.Cross);
+        }
+
+        private void StarBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Star, Cursors.Cross);
+
+        }
+
+        private void RombBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Romb, Cursors.Cross);
+        }
+
+        private void HeartBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Trapez, Cursors.Cross);
         }
 
         private Cursor GetCursor(Bitmap cursor)
@@ -216,7 +259,9 @@ namespace FinalPaint
 
             if (isDrawing && Array.Exists(fillTools, IsEqualTool))
             {
-                new ToolControl(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g).Draw();
+                ToolControl tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
+                Draw(tool);
+
             }
         }
 
@@ -230,6 +275,13 @@ namespace FinalPaint
 
                 new Fill(p, Tools.Fill, 1, color, me.Location, new Point(x, y), g, bmp).Draw();
             }
+            if (Tool == Tools.Dropper)
+            {
+                MouseEventArgs me = (MouseEventArgs)e;
+                color = bmp.GetPixel(me.X, me.Y);
+                currentColor.BackColor = color;
+                currentColor.ForeColor = color;
+            }
 
         }
 
@@ -238,6 +290,8 @@ namespace FinalPaint
             if (Tool == Tools.Pencil)
             {
                 pencilSize = (int)sizeInput.Value;
+                sizeInput.Maximum = 10;
+
                 p = new Pen(color, pencilSize);
             }
 
@@ -305,48 +359,22 @@ namespace FinalPaint
 
         private void PaintApp_Leave(object sender, CancelEventArgs e)
         {
-            /*  string msg = "Do you want to save before closing?";
-              DialogResult result = MessageBox.Show(msg, "Close Confirmation",
-                  MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            string msg = "Do you want to save before closing?";
+            DialogResult result = MessageBox.Show(msg, "Close Confirmation",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-              if (result == DialogResult.Yes)
-              {
-                  SaveBtn_Click(sender, e);
+            if (result == DialogResult.Yes)
+            {
+                SaveBtn_Click(sender, e);
 
-              }
-              e.Cancel = false;*/
-
-        }
-
-        private void PentagonBtn_Click(object sender, EventArgs e)
-        {
-            ChangeTool(Tools.Pentagon, Cursors.Cross);
-            ChangeSize();
-        }
-
-        private void HexagonBtn_Click(object sender, EventArgs e)
-        {
-            ChangeTool(Tools.Hexagon, Cursors.Cross);
-            ChangeSize();
-        }
-
-        private void StarBtn_Click(object sender, EventArgs e)
-        {
-            ChangeTool(Tools.Star, Cursors.Cross);
-            ChangeSize();
+            }
+            e.Cancel = false;
 
         }
 
-        private void RombBtn_Click(object sender, EventArgs e)
+        private void DroppperBtn_Click(object sender, EventArgs e)
         {
-            ChangeTool(Tools.Romb, Cursors.Cross);
-            ChangeSize();
-        }
-
-        private void HeartBtn_Click(object sender, EventArgs e)
-        {
-            ChangeTool(Tools.Trapez, Cursors.Cross);
-            ChangeSize();
+            ChangeTool(Tools.Dropper, GetCursor(Properties.Resources.icons8_dropper_30));
         }
     }
 }

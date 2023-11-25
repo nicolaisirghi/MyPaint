@@ -10,13 +10,12 @@ namespace FinalPaint
 
         public new void Draw()
         {
-            Rect rect;
 
             Point StartPosition = new Point(Math.Min(Start.X, End.X), Math.Min(Start.Y, End.Y));
             Size size = new Size(Math.Abs(Start.X - End.X), Math.Abs(Start.Y - End.Y));
  
 
-            rect = new Rect(StartPosition, size);
+            Rect rect  = new Rect(StartPosition, size);
             G.DrawRectangle(P, rect);
         }
     }

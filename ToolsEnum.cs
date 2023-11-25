@@ -2,6 +2,7 @@
 {
     enum Tools
     {
+        Default = 0,
         Pencil = 1,
         Fill = 2,
         Eraser = 3,
@@ -15,5 +16,6 @@
         Star = 11,
         Romb = 12,
         Trapez = 13,
+        Dropper = 14,
     }
 }

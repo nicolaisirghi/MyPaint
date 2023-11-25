@@ -34,6 +34,7 @@
             PencilBtn = new Button();
             FillBtn = new Button();
             EraserBtn = new Button();
+            DroppperBtn = new Button();
             ToolsLabel = new Label();
             flowLayoutPanel4 = new FlowLayoutPanel();
             sizeInput = new NumericUpDown();
@@ -118,6 +119,7 @@
             flowLayoutPanel3.Controls.Add(PencilBtn);
             flowLayoutPanel3.Controls.Add(FillBtn);
             flowLayoutPanel3.Controls.Add(EraserBtn);
+            flowLayoutPanel3.Controls.Add(DroppperBtn);
             flowLayoutPanel3.Controls.Add(ToolsLabel);
             flowLayoutPanel3.Location = new Point(10, 3);
             flowLayoutPanel3.Margin = new Padding(10, 3, 3, 3);
@@ -136,8 +138,8 @@
             PencilBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             PencilBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             PencilBtn.FlatStyle = FlatStyle.Flat;
-            PencilBtn.Location = new Point(20, 30);
-            PencilBtn.Margin = new Padding(3, 30, 3, 3);
+            PencilBtn.Location = new Point(37, 10);
+            PencilBtn.Margin = new Padding(20, 10, 3, 3);
             PencilBtn.Name = "PencilBtn";
             PencilBtn.Size = new Size(36, 29);
             PencilBtn.TabIndex = 0;
@@ -155,8 +157,8 @@
             FillBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             FillBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             FillBtn.FlatStyle = FlatStyle.Flat;
-            FillBtn.Location = new Point(62, 30);
-            FillBtn.Margin = new Padding(3, 30, 3, 3);
+            FillBtn.Location = new Point(79, 10);
+            FillBtn.Margin = new Padding(3, 10, 3, 3);
             FillBtn.Name = "FillBtn";
             FillBtn.Size = new Size(36, 29);
             FillBtn.TabIndex = 8;
@@ -174,8 +176,8 @@
             EraserBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EraserBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EraserBtn.FlatStyle = FlatStyle.Flat;
-            EraserBtn.Location = new Point(104, 30);
-            EraserBtn.Margin = new Padding(3, 30, 3, 3);
+            EraserBtn.Location = new Point(32, 47);
+            EraserBtn.Margin = new Padding(15, 5, 3, 3);
             EraserBtn.Name = "EraserBtn";
             EraserBtn.Size = new Size(36, 29);
             EraserBtn.TabIndex = 9;
@@ -183,11 +185,30 @@
             EraserBtn.UseVisualStyleBackColor = false;
             EraserBtn.Click += EraserBtn_Click;
             // 
+            // DroppperBtn
+            // 
+            DroppperBtn.BackColor = Color.FromArgb(224, 224, 224);
+            DroppperBtn.BackgroundImage = Properties.Resources.icons8_dropper_30;
+            DroppperBtn.BackgroundImageLayout = ImageLayout.Center;
+            DroppperBtn.Cursor = Cursors.Hand;
+            DroppperBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            DroppperBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            DroppperBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            DroppperBtn.FlatStyle = FlatStyle.Flat;
+            DroppperBtn.Location = new Point(74, 47);
+            DroppperBtn.Margin = new Padding(3, 5, 3, 3);
+            DroppperBtn.Name = "DroppperBtn";
+            DroppperBtn.Size = new Size(36, 29);
+            DroppperBtn.TabIndex = 10;
+            DroppperBtn.Tag = "Dropper";
+            DroppperBtn.UseVisualStyleBackColor = false;
+            DroppperBtn.Click += DroppperBtn_Click;
+            // 
             // ToolsLabel
             // 
             ToolsLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            ToolsLabel.Location = new Point(20, 84);
-            ToolsLabel.Margin = new Padding(3, 22, 3, 0);
+            ToolsLabel.Location = new Point(20, 86);
+            ToolsLabel.Margin = new Padding(3, 7, 3, 0);
             ToolsLabel.Name = "ToolsLabel";
             ToolsLabel.Size = new Size(123, 25);
             ToolsLabel.TabIndex = 7;
@@ -207,10 +228,11 @@
             // 
             // sizeInput
             // 
+            sizeInput.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
             sizeInput.Location = new Point(60, 30);
             sizeInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             sizeInput.Name = "sizeInput";
-            sizeInput.Size = new Size(150, 27);
+            sizeInput.Size = new Size(150, 30);
             sizeInput.TabIndex = 10;
             sizeInput.TextAlign = HorizontalAlignment.Right;
             sizeInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
@@ -219,7 +241,7 @@
             // SizeLabel
             // 
             SizeLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
-            SizeLabel.Location = new Point(60, 60);
+            SizeLabel.Location = new Point(60, 63);
             SizeLabel.Name = "SizeLabel";
             SizeLabel.Padding = new Padding(23, 24, 0, 0);
             SizeLabel.Size = new Size(121, 56);
@@ -966,5 +988,6 @@
         private Button StarBtn;
         private Button RombBtn;
         private Button TrapezBtn;
+        private Button DroppperBtn;
     }
 }
