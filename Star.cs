@@ -18,7 +18,7 @@
                  new Point(Start.X, Start.Y + (End.Y - Start.Y) / 3),
                  new Point(Start.X + (End.X - Start.X) / 4, Start.Y + (End.Y - Start.Y) / 2),
                  new Point(Start.X, End.Y),
-                 new Point(Start.X + (End.X - Start.X) / 2, Start.Y + (End.Y - Start.Y) / 2),
+                 new Point(Start.X + (End.X - Start.X) / 2, Start.Y  + Start.Y/10 + (End.Y - Start.Y) / 2),
                  new Point(End.X, End.Y),
                  new Point(Start.X + (End.X - Start.X) / 4 * 3, Start.Y + (End.Y - Start.Y) / 2),
                  new Point(End.X, Start.Y + (End.Y - Start.Y) / 3),
