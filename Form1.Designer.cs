@@ -83,10 +83,13 @@
             ColorLabel = new Label();
             label1 = new Label();
             currentColor = new Label();
+            flowLayoutPanel8 = new FlowLayoutPanel();
+            uploadBtn = new Button();
             flowLayoutPanel7 = new FlowLayoutPanel();
             ResetBtn = new Button();
             SaveBtn = new Button();
             flowLayoutPanel2 = new FlowLayoutPanel();
+            ShortcutsBtn = new Button();
             locationLabel = new Label();
             Board = new PictureBox();
             toolTip1 = new ToolTip(components);
@@ -96,6 +99,7 @@
             ((System.ComponentModel.ISupportInitialize)sizeInput).BeginInit();
             flowLayoutPanel5.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
+            flowLayoutPanel8.SuspendLayout();
             flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Board).BeginInit();
@@ -108,11 +112,12 @@
             flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel8);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel7);
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1537, 141);
+            flowLayoutPanel1.Size = new Size(1844, 141);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -208,7 +213,7 @@
             // 
             // ToolsLabel
             // 
-            ToolsLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            ToolsLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
             ToolsLabel.Location = new Point(20, 86);
             ToolsLabel.Margin = new Padding(3, 7, 3, 0);
             ToolsLabel.Name = "ToolsLabel";
@@ -242,7 +247,7 @@
             // 
             // SizeLabel
             // 
-            SizeLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            SizeLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
             SizeLabel.Location = new Point(60, 63);
             SizeLabel.Name = "SizeLabel";
             SizeLabel.Padding = new Padding(23, 24, 0, 0);
@@ -464,11 +469,11 @@
             // ShapeLabel
             // 
             ShapeLabel.AutoSize = true;
-            ShapeLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            ShapeLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
             ShapeLabel.Location = new Point(75, 87);
             ShapeLabel.Margin = new Padding(60, 10, 0, 0);
             ShapeLabel.Name = "ShapeLabel";
-            ShapeLabel.Size = new Size(86, 30);
+            ShapeLabel.Size = new Size(93, 27);
             ShapeLabel.TabIndex = 12;
             ShapeLabel.Text = "Shapes";
             // 
@@ -788,6 +793,7 @@
             // customColor
             // 
             customColor.Cursor = Cursors.Hand;
+            customColor.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
             customColor.Location = new Point(3, 91);
             customColor.Margin = new Padding(3, 11, 3, 4);
             customColor.Name = "customColor";
@@ -799,7 +805,7 @@
             // 
             // ColorLabel
             // 
-            ColorLabel.Font = new Font("Segoe UI", 13F, FontStyle.Bold, GraphicsUnit.Point);
+            ColorLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
             ColorLabel.Location = new Point(229, 87);
             ColorLabel.Margin = new Padding(137, 7, 3, 0);
             ColorLabel.Name = "ColorLabel";
@@ -811,31 +817,54 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             label1.ForeColor = Color.Black;
             label1.Location = new Point(385, 88);
             label1.Margin = new Padding(75, 8, 3, 0);
             label1.Name = "label1";
-            label1.Size = new Size(94, 28);
+            label1.Size = new Size(93, 23);
             label1.TabIndex = 38;
             label1.Text = "Current :";
             // 
             // currentColor
             // 
             currentColor.BackColor = Color.Black;
-            currentColor.Location = new Point(484, 85);
+            currentColor.Location = new Point(483, 85);
             currentColor.Margin = new Padding(2, 5, 3, 0);
             currentColor.Name = "currentColor";
             currentColor.Size = new Size(33, 33);
             currentColor.TabIndex = 39;
             currentColor.Text = "ngjgjggj";
             // 
+            // flowLayoutPanel8
+            // 
+            flowLayoutPanel8.BorderStyle = BorderStyle.FixedSingle;
+            flowLayoutPanel8.Controls.Add(uploadBtn);
+            flowLayoutPanel8.Location = new Point(1232, 3);
+            flowLayoutPanel8.Name = "flowLayoutPanel8";
+            flowLayoutPanel8.Padding = new Padding(17, 0, 0, 0);
+            flowLayoutPanel8.Size = new Size(300, 125);
+            flowLayoutPanel8.TabIndex = 12;
+            // 
+            // uploadBtn
+            // 
+            uploadBtn.Cursor = Cursors.Hand;
+            uploadBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            uploadBtn.Location = new Point(67, 30);
+            uploadBtn.Margin = new Padding(50, 30, 3, 3);
+            uploadBtn.Name = "uploadBtn";
+            uploadBtn.Size = new Size(170, 56);
+            uploadBtn.TabIndex = 1;
+            uploadBtn.Text = "Upload Image";
+            uploadBtn.UseVisualStyleBackColor = true;
+            uploadBtn.Click += uploadBtn_Click;
+            // 
             // flowLayoutPanel7
             // 
             flowLayoutPanel7.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel7.Controls.Add(ResetBtn);
             flowLayoutPanel7.Controls.Add(SaveBtn);
-            flowLayoutPanel7.Location = new Point(1232, 3);
+            flowLayoutPanel7.Location = new Point(1538, 3);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
             flowLayoutPanel7.Padding = new Padding(17, 0, 0, 0);
             flowLayoutPanel7.Size = new Size(300, 125);
@@ -844,7 +873,7 @@
             // ResetBtn
             // 
             ResetBtn.Cursor = Cursors.Hand;
-            ResetBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            ResetBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             ResetBtn.Location = new Point(67, 3);
             ResetBtn.Margin = new Padding(50, 3, 3, 3);
             ResetBtn.Name = "ResetBtn";
@@ -857,7 +886,7 @@
             // SaveBtn
             // 
             SaveBtn.Cursor = Cursors.Hand;
-            SaveBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            SaveBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
             SaveBtn.Location = new Point(67, 65);
             SaveBtn.Margin = new Padding(50, 3, 3, 3);
             SaveBtn.Name = "SaveBtn";
@@ -870,22 +899,40 @@
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.BackColor = Color.FromArgb(64, 64, 64);
+            flowLayoutPanel2.Controls.Add(ShortcutsBtn);
             flowLayoutPanel2.Controls.Add(locationLabel);
             flowLayoutPanel2.Dock = DockStyle.Bottom;
-            flowLayoutPanel2.Location = new Point(0, 1003);
+            flowLayoutPanel2.Location = new Point(0, 971);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1537, 38);
+            flowLayoutPanel2.Size = new Size(1844, 70);
             flowLayoutPanel2.TabIndex = 1;
+            // 
+            // ShortcutsBtn
+            // 
+            ShortcutsBtn.Cursor = Cursors.Hand;
+            ShortcutsBtn.FlatAppearance.BorderSize = 0;
+            ShortcutsBtn.FlatStyle = FlatStyle.Flat;
+            ShortcutsBtn.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
+            ShortcutsBtn.ForeColor = Color.White;
+            ShortcutsBtn.Location = new Point(3, 0);
+            ShortcutsBtn.Margin = new Padding(3, 0, 3, 3);
+            ShortcutsBtn.Name = "ShortcutsBtn";
+            ShortcutsBtn.Size = new Size(151, 70);
+            ShortcutsBtn.TabIndex = 2;
+            ShortcutsBtn.Text = "Shortcuts";
+            ShortcutsBtn.TextAlign = ContentAlignment.TopCenter;
+            ShortcutsBtn.UseVisualStyleBackColor = true;
+            ShortcutsBtn.Click += ShortcutsBtn_Click;
             // 
             // locationLabel
             // 
             locationLabel.AutoSize = true;
-            locationLabel.Font = new Font("Segoe UI", 14F, FontStyle.Regular, GraphicsUnit.Point);
+            locationLabel.Font = new Font("Century Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point);
             locationLabel.ForeColor = Color.White;
-            locationLabel.Location = new Point(3, 0);
+            locationLabel.Location = new Point(160, 0);
             locationLabel.Name = "locationLabel";
-            locationLabel.Padding = new Padding(0, 0, 20, 0);
-            locationLabel.Size = new Size(261, 32);
+            locationLabel.Padding = new Padding(0, 3, 20, 0);
+            locationLabel.Size = new Size(265, 30);
             locationLabel.TabIndex = 1;
             locationLabel.Text = "Location  : { X=0,Y=0}";
             locationLabel.TextAlign = ContentAlignment.MiddleCenter;
@@ -896,7 +943,7 @@
             Board.Location = new Point(0, 0);
             Board.Margin = new Padding(30, 3, 3, 3);
             Board.Name = "Board";
-            Board.Size = new Size(1537, 1041);
+            Board.Size = new Size(1844, 1041);
             Board.TabIndex = 2;
             Board.TabStop = false;
             Board.Click += Board_Click;
@@ -905,20 +952,20 @@
             Board.MouseMove += Board_MouseMove;
             Board.MouseUp += Board_MouseUp;
             // 
-            // toolTip1
-            // 
-            // 
             // PaintApp
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1537, 1041);
+            ClientSize = new Size(1844, 1041);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(Board);
+            KeyPreview = true;
             Name = "PaintApp";
             Text = "Form1";
             Load += PaintApp_Load;
+            SizeChanged += PaintApp_SizeChanged;
+            KeyDown += PaintApp_KeyDown;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
             flowLayoutPanel4.ResumeLayout(false);
@@ -927,6 +974,7 @@
             flowLayoutPanel5.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
+            flowLayoutPanel8.ResumeLayout(false);
             flowLayoutPanel7.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
@@ -996,5 +1044,8 @@
         private Button TrapezBtn;
         private Button DroppperBtn;
         private ToolTip toolTip1;
+        private FlowLayoutPanel flowLayoutPanel8;
+        private Button uploadBtn;
+        private Button ShortcutsBtn;
     }
 }
