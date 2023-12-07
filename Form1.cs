@@ -21,13 +21,16 @@ namespace FinalPaint
             g.Clear(Color.White);
             Board.Image = bmp;
 
+            FontFamily fontFamily = new FontFamily("Segoe UI");
+            Font font = new Font(fontFamily, 12, FontStyle.Regular);
+
             color = Color.Black;
             size = pencilSize = 1;
             sizeInput.Maximum = 10;
             Tool = Tools.Pencil;
             lastTool = Tools.Pencil;
 
-            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, DroppperBtn, RectangleBtn, EllipseBtn, FillBtn, TriangleBtn, RightTriangleBtn, PentagonBtn, HexagonBtn, StarBtn, RombBtn, TrapezBtn };
+            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, DroppperBtn, RectangleBtn, EllipseBtn, FillBtn, TriangleBtn, RightTriangleBtn, PentagonBtn, HexagonBtn, StarBtn, RombBtn, TrapezBtn, TypographyBtn };
 
 
             PencilBtn.BackColor = Color.FromArgb(192, 255, 255);
@@ -49,6 +52,11 @@ namespace FinalPaint
         Tools[] sampleTools, fillTools;
         bool isDrawing = false;
         int keyCode = 0;
+        FontFamily fontFamily;
+        FontStyle fontStyle;
+        int fontSize;
+        Font font;
+
 
         Stack<Bitmap> undoStack = new Stack<Bitmap>();
         Stack<Bitmap> redoStack = new Stack<Bitmap>();
@@ -153,8 +161,7 @@ namespace FinalPaint
 
                 Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
 
-                redoStack.Push(bitmap);
-
+                undoStack.Push(bitmap);
 
             }
 
@@ -290,7 +297,7 @@ namespace FinalPaint
 
 
                 Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
-                this.redoStack.Push(bitmap);
+                this.undoStack.Push(bitmap);
 
             }
             if (Tool == Tools.Dropper)
@@ -301,7 +308,22 @@ namespace FinalPaint
                 currentColor.ForeColor = color;
             }
 
+            if (Tool == Tools.Typography)
+            {
+                new Typography(p, Tools.Typography, size, color, new Point(x, y), new Point(x, y), g, Board, font).Draw();
+            }
+
         }
+
+
+
+        private void TypoaphyBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Typography, Cursors.IBeam);
+
+        }
+
+ 
 
         private void sizeInput_ValueChanged(object sender, EventArgs e)
         {
@@ -432,7 +454,7 @@ namespace FinalPaint
         private void PaintApp_Load(object sender, EventArgs e)
         {
             SetTooltip();
-         
+
         }
 
         private void UndoAction()
@@ -440,14 +462,12 @@ namespace FinalPaint
 
             if (undoStack.Count > 0)
             {
-                Bitmap bitmap = undoStack.Pop();
-                bmp = (Bitmap)bitmap.Clone();
-                bmp = new Bitmap(bmp, Board.Width, Board.Height);
-                redoStack.Push(bitmap);
-
+                redoStack.Push(new Bitmap(bmp, Board.Width, Board.Height));
+                bmp = undoStack.Pop();
                 g = Graphics.FromImage(bmp);
-
                 Board.Image = bmp;
+
+
             }
 
         }
@@ -458,12 +478,9 @@ namespace FinalPaint
 
             if (redoStack.Count > 0)
             {
-                Bitmap bitmap = redoStack.Pop();
-                bmp = (Bitmap)bitmap.Clone();
-                bmp = new Bitmap(bmp, Board.Width, Board.Height);
 
-                undoStack.Push(bitmap);
-
+                undoStack.Push(new Bitmap(bmp, Board.Width, Board.Height));
+                bmp = redoStack.Pop();
                 g = Graphics.FromImage(bmp);
                 Board.Image = bmp;
 
@@ -605,11 +622,25 @@ namespace FinalPaint
         private void PaintApp_SizeChanged(object sender, EventArgs e)
         {
 
-            this.bmp = new Bitmap(bmp,Board.Width, Board.Height);
+            this.bmp = new Bitmap(bmp, Board.Width, Board.Height);
             g = Graphics.FromImage(bmp);
             Board.Image = bmp;
 
-            Console.WriteLine("Width: " + this.Width + " Height: " + this.Height);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            FontDialog fd = new FontDialog();
+            if (fd.ShowDialog() == DialogResult.OK)
+            {
+                font = fd.Font;
+                fontSizeLabel.Text = font.Size.ToString();
+                fontFamilyLabel.Text = font.FontFamily.Name;
+                fontStyleLabel.Text = font.Style.ToString();
+
+            }
+
         }
     }
 }

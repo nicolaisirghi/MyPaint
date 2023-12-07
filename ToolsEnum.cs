@@ -17,5 +17,7 @@
         Romb = 12,
         Trapez = 13,
         Dropper = 14,
+        Typography = 15,
+        Selection = 16,
     }
 }

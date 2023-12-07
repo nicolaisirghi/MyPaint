@@ -34,9 +34,19 @@
             flowLayoutPanel3 = new FlowLayoutPanel();
             PencilBtn = new Button();
             FillBtn = new Button();
+            TypographyBtn = new Button();
             EraserBtn = new Button();
             DroppperBtn = new Button();
             ToolsLabel = new Label();
+            flowLayoutPanel9 = new FlowLayoutPanel();
+            fontLabel = new Label();
+            fontFamilyLabel = new Label();
+            label2 = new Label();
+            fontStyleLabel = new Label();
+            label3 = new Label();
+            fontSizeLabel = new Label();
+            changeTextBtn = new Button();
+            TypographyLabel = new Label();
             flowLayoutPanel4 = new FlowLayoutPanel();
             sizeInput = new NumericUpDown();
             SizeLabel = new Label();
@@ -95,6 +105,7 @@
             toolTip1 = new ToolTip(components);
             flowLayoutPanel1.SuspendLayout();
             flowLayoutPanel3.SuspendLayout();
+            flowLayoutPanel9.SuspendLayout();
             flowLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)sizeInput).BeginInit();
             flowLayoutPanel5.SuspendLayout();
@@ -109,6 +120,7 @@
             // 
             flowLayoutPanel1.BackColor = Color.FromArgb(224, 224, 224);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel3);
+            flowLayoutPanel1.Controls.Add(flowLayoutPanel9);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
@@ -117,7 +129,7 @@
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1844, 141);
+            flowLayoutPanel1.Size = new Size(1844, 134);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -125,6 +137,7 @@
             flowLayoutPanel3.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel3.Controls.Add(PencilBtn);
             flowLayoutPanel3.Controls.Add(FillBtn);
+            flowLayoutPanel3.Controls.Add(TypographyBtn);
             flowLayoutPanel3.Controls.Add(EraserBtn);
             flowLayoutPanel3.Controls.Add(DroppperBtn);
             flowLayoutPanel3.Controls.Add(ToolsLabel);
@@ -173,6 +186,25 @@
             FillBtn.UseVisualStyleBackColor = false;
             FillBtn.Click += FillBtn_Click;
             // 
+            // TypographyBtn
+            // 
+            TypographyBtn.BackColor = Color.FromArgb(224, 224, 224);
+            TypographyBtn.BackgroundImage = Properties.Resources.icons8_typography_30;
+            TypographyBtn.BackgroundImageLayout = ImageLayout.Center;
+            TypographyBtn.Cursor = Cursors.Hand;
+            TypographyBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            TypographyBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            TypographyBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            TypographyBtn.FlatStyle = FlatStyle.Flat;
+            TypographyBtn.Location = new Point(17, 47);
+            TypographyBtn.Margin = new Padding(0, 5, 3, 3);
+            TypographyBtn.Name = "TypographyBtn";
+            TypographyBtn.Size = new Size(36, 29);
+            TypographyBtn.TabIndex = 11;
+            TypographyBtn.Tag = "Typography";
+            TypographyBtn.UseVisualStyleBackColor = false;
+            TypographyBtn.Click += TypoaphyBtn_Click;
+            // 
             // EraserBtn
             // 
             EraserBtn.BackColor = Color.FromArgb(224, 224, 224);
@@ -183,8 +215,8 @@
             EraserBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EraserBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EraserBtn.FlatStyle = FlatStyle.Flat;
-            EraserBtn.Location = new Point(32, 47);
-            EraserBtn.Margin = new Padding(15, 5, 3, 3);
+            EraserBtn.Location = new Point(61, 47);
+            EraserBtn.Margin = new Padding(5, 5, 3, 3);
             EraserBtn.Name = "EraserBtn";
             EraserBtn.Size = new Size(36, 29);
             EraserBtn.TabIndex = 9;
@@ -202,7 +234,7 @@
             DroppperBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             DroppperBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             DroppperBtn.FlatStyle = FlatStyle.Flat;
-            DroppperBtn.Location = new Point(74, 47);
+            DroppperBtn.Location = new Point(103, 47);
             DroppperBtn.Margin = new Padding(3, 5, 3, 3);
             DroppperBtn.Name = "DroppperBtn";
             DroppperBtn.Size = new Size(36, 29);
@@ -222,12 +254,120 @@
             ToolsLabel.Text = "Tools";
             ToolsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
+            // flowLayoutPanel9
+            // 
+            flowLayoutPanel9.BorderStyle = BorderStyle.FixedSingle;
+            flowLayoutPanel9.Controls.Add(fontLabel);
+            flowLayoutPanel9.Controls.Add(fontFamilyLabel);
+            flowLayoutPanel9.Controls.Add(label2);
+            flowLayoutPanel9.Controls.Add(fontStyleLabel);
+            flowLayoutPanel9.Controls.Add(label3);
+            flowLayoutPanel9.Controls.Add(fontSizeLabel);
+            flowLayoutPanel9.Controls.Add(changeTextBtn);
+            flowLayoutPanel9.Controls.Add(TypographyLabel);
+            flowLayoutPanel9.Location = new Point(170, 3);
+            flowLayoutPanel9.Name = "flowLayoutPanel9";
+            flowLayoutPanel9.Size = new Size(294, 125);
+            flowLayoutPanel9.TabIndex = 11;
+            // 
+            // fontLabel
+            // 
+            fontLabel.AutoSize = true;
+            fontLabel.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            fontLabel.Location = new Point(3, 3);
+            fontLabel.Margin = new Padding(3, 3, 3, 0);
+            fontLabel.Name = "fontLabel";
+            fontLabel.Size = new Size(63, 23);
+            fontLabel.TabIndex = 10;
+            fontLabel.Text = "Font :";
+            // 
+            // fontFamilyLabel
+            // 
+            fontFamilyLabel.AutoSize = true;
+            fontFamilyLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            fontFamilyLabel.Location = new Point(72, 0);
+            fontFamilyLabel.Margin = new Padding(3, 0, 80, 0);
+            fontFamilyLabel.Name = "fontFamilyLabel";
+            fontFamilyLabel.Size = new Size(67, 28);
+            fontFamilyLabel.TabIndex = 11;
+            fontFamilyLabel.Text = "Segoe";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label2.Location = new Point(3, 31);
+            label2.Margin = new Padding(3, 3, 3, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 23);
+            label2.TabIndex = 12;
+            label2.Text = "Style :";
+            label2.TextAlign = ContentAlignment.MiddleLeft;
+            // 
+            // fontStyleLabel
+            // 
+            fontStyleLabel.AutoSize = true;
+            fontStyleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            fontStyleLabel.Location = new Point(77, 28);
+            fontStyleLabel.Margin = new Padding(3, 0, 120, 0);
+            fontStyleLabel.Name = "fontStyleLabel";
+            fontStyleLabel.Size = new Size(78, 28);
+            fontStyleLabel.TabIndex = 13;
+            fontStyleLabel.Text = "Normal";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label3.Location = new Point(3, 59);
+            label3.Margin = new Padding(3, 3, 3, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(59, 23);
+            label3.TabIndex = 14;
+            label3.Text = "Size :";
+            // 
+            // fontSizeLabel
+            // 
+            fontSizeLabel.AutoSize = true;
+            fontSizeLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            fontSizeLabel.Location = new Point(68, 56);
+            fontSizeLabel.Margin = new Padding(3, 0, 70, 0);
+            fontSizeLabel.Name = "fontSizeLabel";
+            fontSizeLabel.Size = new Size(34, 28);
+            fontSizeLabel.TabIndex = 15;
+            fontSizeLabel.Text = "12";
+            // 
+            // changeTextBtn
+            // 
+            changeTextBtn.Cursor = Cursors.Hand;
+            changeTextBtn.Font = new Font("Century Gothic", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            changeTextBtn.Location = new Point(175, 56);
+            changeTextBtn.Margin = new Padding(3, 0, 3, 0);
+            changeTextBtn.Name = "changeTextBtn";
+            changeTextBtn.Size = new Size(96, 33);
+            changeTextBtn.TabIndex = 23;
+            changeTextBtn.Text = "Change ..";
+            changeTextBtn.UseVisualStyleBackColor = true;
+            changeTextBtn.Click += button1_Click;
+            // 
+            // TypographyLabel
+            // 
+            TypographyLabel.Font = new Font("Century Gothic", 13.2000008F, FontStyle.Bold, GraphicsUnit.Point);
+            TypographyLabel.Location = new Point(120, 89);
+            TypographyLabel.Margin = new Padding(120, 0, 3, 0);
+            TypographyLabel.Name = "TypographyLabel";
+            TypographyLabel.Padding = new Padding(0, 0, 0, 10);
+            TypographyLabel.Size = new Size(57, 40);
+            TypographyLabel.TabIndex = 9;
+            TypographyLabel.Text = "Text";
+            TypographyLabel.TextAlign = ContentAlignment.MiddleLeft;
+            // 
             // flowLayoutPanel4
             // 
             flowLayoutPanel4.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel4.Controls.Add(sizeInput);
             flowLayoutPanel4.Controls.Add(SizeLabel);
-            flowLayoutPanel4.Location = new Point(170, 3);
+            flowLayoutPanel4.Location = new Point(470, 3);
             flowLayoutPanel4.Name = "flowLayoutPanel4";
             flowLayoutPanel4.Padding = new Padding(57, 27, 0, 0);
             flowLayoutPanel4.Size = new Size(250, 125);
@@ -270,7 +410,7 @@
             flowLayoutPanel5.Controls.Add(HexagonBtn);
             flowLayoutPanel5.Controls.Add(StarBtn);
             flowLayoutPanel5.Controls.Add(ShapeLabel);
-            flowLayoutPanel5.Location = new Point(426, 3);
+            flowLayoutPanel5.Location = new Point(726, 3);
             flowLayoutPanel5.Name = "flowLayoutPanel5";
             flowLayoutPanel5.Padding = new Padding(15, 0, 12, 0);
             flowLayoutPanel5.Size = new Size(240, 125);
@@ -511,7 +651,7 @@
             flowLayoutPanel6.Controls.Add(label1);
             flowLayoutPanel6.Controls.Add(currentColor);
             flowLayoutPanel6.Cursor = Cursors.Hand;
-            flowLayoutPanel6.Location = new Point(672, 3);
+            flowLayoutPanel6.Location = new Point(972, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new Padding(0, 7, 0, 0);
             flowLayoutPanel6.Size = new Size(554, 125);
@@ -840,7 +980,7 @@
             // 
             flowLayoutPanel8.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel8.Controls.Add(uploadBtn);
-            flowLayoutPanel8.Location = new Point(1232, 3);
+            flowLayoutPanel8.Location = new Point(1532, 3);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
             flowLayoutPanel8.Padding = new Padding(17, 0, 0, 0);
             flowLayoutPanel8.Size = new Size(300, 125);
@@ -864,7 +1004,7 @@
             flowLayoutPanel7.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel7.Controls.Add(ResetBtn);
             flowLayoutPanel7.Controls.Add(SaveBtn);
-            flowLayoutPanel7.Location = new Point(1538, 3);
+            flowLayoutPanel7.Location = new Point(3, 134);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
             flowLayoutPanel7.Padding = new Padding(17, 0, 0, 0);
             flowLayoutPanel7.Size = new Size(300, 125);
@@ -968,6 +1108,8 @@
             KeyDown += PaintApp_KeyDown;
             flowLayoutPanel1.ResumeLayout(false);
             flowLayoutPanel3.ResumeLayout(false);
+            flowLayoutPanel9.ResumeLayout(false);
+            flowLayoutPanel9.PerformLayout();
             flowLayoutPanel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)sizeInput).EndInit();
             flowLayoutPanel5.ResumeLayout(false);
@@ -1047,5 +1189,15 @@
         private FlowLayoutPanel flowLayoutPanel8;
         private Button uploadBtn;
         private Button ShortcutsBtn;
+        private Button TypographyBtn;
+        private FlowLayoutPanel flowLayoutPanel9;
+        private Label TypographyLabel;
+        private Label fontLabel;
+        private Label fontFamilyLabel;
+        private Label label2;
+        private Label fontStyleLabel;
+        private Label label3;
+        private Label fontSizeLabel;
+        private Button changeTextBtn;
     }
 }
