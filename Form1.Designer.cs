@@ -129,7 +129,7 @@
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1844, 134);
+            flowLayoutPanel1.Size = new Size(1844, 130);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -654,7 +654,7 @@
             flowLayoutPanel6.Location = new Point(972, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new Padding(0, 7, 0, 0);
-            flowLayoutPanel6.Size = new Size(554, 125);
+            flowLayoutPanel6.Size = new Size(531, 125);
             flowLayoutPanel6.TabIndex = 9;
             // 
             // black
@@ -980,18 +980,18 @@
             // 
             flowLayoutPanel8.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel8.Controls.Add(uploadBtn);
-            flowLayoutPanel8.Location = new Point(1532, 3);
+            flowLayoutPanel8.Location = new Point(1509, 3);
             flowLayoutPanel8.Name = "flowLayoutPanel8";
             flowLayoutPanel8.Padding = new Padding(17, 0, 0, 0);
-            flowLayoutPanel8.Size = new Size(300, 125);
+            flowLayoutPanel8.Size = new Size(207, 125);
             flowLayoutPanel8.TabIndex = 12;
             // 
             // uploadBtn
             // 
             uploadBtn.Cursor = Cursors.Hand;
             uploadBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            uploadBtn.Location = new Point(67, 30);
-            uploadBtn.Margin = new Padding(50, 30, 3, 3);
+            uploadBtn.Location = new Point(17, 30);
+            uploadBtn.Margin = new Padding(0, 30, 3, 3);
             uploadBtn.Name = "uploadBtn";
             uploadBtn.Size = new Size(170, 56);
             uploadBtn.TabIndex = 1;
@@ -1007,15 +1007,15 @@
             flowLayoutPanel7.Location = new Point(3, 134);
             flowLayoutPanel7.Name = "flowLayoutPanel7";
             flowLayoutPanel7.Padding = new Padding(17, 0, 0, 0);
-            flowLayoutPanel7.Size = new Size(300, 125);
+            flowLayoutPanel7.Size = new Size(190, 125);
             flowLayoutPanel7.TabIndex = 11;
             // 
             // ResetBtn
             // 
             ResetBtn.Cursor = Cursors.Hand;
             ResetBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            ResetBtn.Location = new Point(67, 3);
-            ResetBtn.Margin = new Padding(50, 3, 3, 3);
+            ResetBtn.Location = new Point(17, 3);
+            ResetBtn.Margin = new Padding(0, 3, 3, 3);
             ResetBtn.Name = "ResetBtn";
             ResetBtn.Size = new Size(154, 56);
             ResetBtn.TabIndex = 0;
@@ -1027,8 +1027,8 @@
             // 
             SaveBtn.Cursor = Cursors.Hand;
             SaveBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            SaveBtn.Location = new Point(67, 65);
-            SaveBtn.Margin = new Padding(50, 3, 3, 3);
+            SaveBtn.Location = new Point(17, 65);
+            SaveBtn.Margin = new Padding(0, 3, 3, 3);
             SaveBtn.Name = "SaveBtn";
             SaveBtn.Size = new Size(154, 56);
             SaveBtn.TabIndex = 1;

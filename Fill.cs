@@ -9,8 +9,56 @@
 
         public new void Draw()
         {
-            FillObject(Bmp, Start.X,Start.Y, Color);
+            FillObjectOptimized(Bmp, Start.X,Start.Y, Color);
         }
+
+
+        public void FillObjectOptimized(Bitmap bmp, int x, int y, Color newColor)
+        {
+            if (bmp == null || bmp.Width <= 0 || bmp.Height <= 0)
+            {
+                return;
+            }
+
+            Color oldColor = bmp.GetPixel(x, y);
+
+            if (oldColor.ToArgb() == newColor.ToArgb())
+            {
+                // The new color is the same as the old color, nothing to fill.
+                return;
+            }
+
+            Stack<Point> stack = new Stack<Point>();
+            stack.Push(new Point(x, y));
+            bmp.SetPixel(x, y, newColor);
+
+            int oldColorArgb = oldColor.ToArgb();
+            int newColorArgb = newColor.ToArgb();
+
+            while (stack.Count > 0)
+            {
+                Point p = stack.Pop();
+
+                if (p.X > 0 && p.X < bmp.Width - 1 && p.Y > 0 && p.Y < bmp.Height - 1)
+                {
+                    ValidateOptimized(bmp, stack, p.X - 1, p.Y, oldColorArgb, newColorArgb);
+                    ValidateOptimized(bmp, stack, p.X, p.Y - 1, oldColorArgb, newColorArgb);
+                    ValidateOptimized(bmp, stack, p.X + 1, p.Y, oldColorArgb, newColorArgb);
+                    ValidateOptimized(bmp, stack, p.X, p.Y + 1, oldColorArgb, newColorArgb);
+                }
+            }
+        }
+
+        private void ValidateOptimized(Bitmap bmp, Stack<Point> stack, int x, int y, int oldColorArgb, int newColorArgb)
+        {
+            Color cx = bmp.GetPixel(x, y);
+            if (cx.ToArgb() == oldColorArgb)
+            {
+                bmp.SetPixel(x, y, Color.FromArgb(newColorArgb));
+                stack.Push(new Point(x, y));
+            }
+        }
+
 
 
 

@@ -323,7 +323,7 @@ namespace FinalPaint
 
         }
 
- 
+
 
         private void sizeInput_ValueChanged(object sender, EventArgs e)
         {
