@@ -93,11 +93,6 @@
             ColorLabel = new Label();
             label1 = new Label();
             currentColor = new Label();
-            flowLayoutPanel8 = new FlowLayoutPanel();
-            uploadBtn = new Button();
-            flowLayoutPanel7 = new FlowLayoutPanel();
-            ResetBtn = new Button();
-            SaveBtn = new Button();
             flowLayoutPanel2 = new FlowLayoutPanel();
             ShortcutsBtn = new Button();
             locationLabel = new Label();
@@ -110,8 +105,6 @@
             ((System.ComponentModel.ISupportInitialize)sizeInput).BeginInit();
             flowLayoutPanel5.SuspendLayout();
             flowLayoutPanel6.SuspendLayout();
-            flowLayoutPanel8.SuspendLayout();
-            flowLayoutPanel7.SuspendLayout();
             flowLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)Board).BeginInit();
             SuspendLayout();
@@ -124,12 +117,10 @@
             flowLayoutPanel1.Controls.Add(flowLayoutPanel4);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel5);
             flowLayoutPanel1.Controls.Add(flowLayoutPanel6);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanel8);
-            flowLayoutPanel1.Controls.Add(flowLayoutPanel7);
             flowLayoutPanel1.Dock = DockStyle.Top;
             flowLayoutPanel1.Location = new Point(0, 0);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(1844, 130);
+            flowLayoutPanel1.Size = new Size(1536, 130);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // flowLayoutPanel3
@@ -654,7 +645,7 @@
             flowLayoutPanel6.Location = new Point(972, 3);
             flowLayoutPanel6.Name = "flowLayoutPanel6";
             flowLayoutPanel6.Padding = new Padding(0, 7, 0, 0);
-            flowLayoutPanel6.Size = new Size(531, 125);
+            flowLayoutPanel6.Size = new Size(560, 125);
             flowLayoutPanel6.TabIndex = 9;
             // 
             // black
@@ -976,66 +967,6 @@
             currentColor.TabIndex = 39;
             currentColor.Text = "ngjgjggj";
             // 
-            // flowLayoutPanel8
-            // 
-            flowLayoutPanel8.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel8.Controls.Add(uploadBtn);
-            flowLayoutPanel8.Location = new Point(1509, 3);
-            flowLayoutPanel8.Name = "flowLayoutPanel8";
-            flowLayoutPanel8.Padding = new Padding(17, 0, 0, 0);
-            flowLayoutPanel8.Size = new Size(207, 125);
-            flowLayoutPanel8.TabIndex = 12;
-            // 
-            // uploadBtn
-            // 
-            uploadBtn.Cursor = Cursors.Hand;
-            uploadBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            uploadBtn.Location = new Point(17, 30);
-            uploadBtn.Margin = new Padding(0, 30, 3, 3);
-            uploadBtn.Name = "uploadBtn";
-            uploadBtn.Size = new Size(170, 56);
-            uploadBtn.TabIndex = 1;
-            uploadBtn.Text = "Upload Image";
-            uploadBtn.UseVisualStyleBackColor = true;
-            uploadBtn.Click += uploadBtn_Click;
-            // 
-            // flowLayoutPanel7
-            // 
-            flowLayoutPanel7.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel7.Controls.Add(ResetBtn);
-            flowLayoutPanel7.Controls.Add(SaveBtn);
-            flowLayoutPanel7.Location = new Point(3, 134);
-            flowLayoutPanel7.Name = "flowLayoutPanel7";
-            flowLayoutPanel7.Padding = new Padding(17, 0, 0, 0);
-            flowLayoutPanel7.Size = new Size(190, 125);
-            flowLayoutPanel7.TabIndex = 11;
-            // 
-            // ResetBtn
-            // 
-            ResetBtn.Cursor = Cursors.Hand;
-            ResetBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            ResetBtn.Location = new Point(17, 3);
-            ResetBtn.Margin = new Padding(0, 3, 3, 3);
-            ResetBtn.Name = "ResetBtn";
-            ResetBtn.Size = new Size(154, 56);
-            ResetBtn.TabIndex = 0;
-            ResetBtn.Text = "Clear";
-            ResetBtn.UseVisualStyleBackColor = true;
-            ResetBtn.Click += ResetBtn_Click;
-            // 
-            // SaveBtn
-            // 
-            SaveBtn.Cursor = Cursors.Hand;
-            SaveBtn.Font = new Font("Century Gothic", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            SaveBtn.Location = new Point(17, 65);
-            SaveBtn.Margin = new Padding(0, 3, 3, 3);
-            SaveBtn.Name = "SaveBtn";
-            SaveBtn.Size = new Size(154, 56);
-            SaveBtn.TabIndex = 1;
-            SaveBtn.Text = "Save";
-            SaveBtn.UseVisualStyleBackColor = true;
-            SaveBtn.Click += SaveBtn_Click;
-            // 
             // flowLayoutPanel2
             // 
             flowLayoutPanel2.BackColor = Color.FromArgb(64, 64, 64);
@@ -1044,7 +975,7 @@
             flowLayoutPanel2.Dock = DockStyle.Bottom;
             flowLayoutPanel2.Location = new Point(0, 971);
             flowLayoutPanel2.Name = "flowLayoutPanel2";
-            flowLayoutPanel2.Size = new Size(1844, 70);
+            flowLayoutPanel2.Size = new Size(1536, 70);
             flowLayoutPanel2.TabIndex = 1;
             // 
             // ShortcutsBtn
@@ -1083,7 +1014,7 @@
             Board.Location = new Point(0, 0);
             Board.Margin = new Padding(30, 3, 3, 3);
             Board.Name = "Board";
-            Board.Size = new Size(1844, 1041);
+            Board.Size = new Size(1536, 1041);
             Board.TabIndex = 2;
             Board.TabStop = false;
             Board.Click += Board_Click;
@@ -1096,7 +1027,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1844, 1041);
+            ClientSize = new Size(1536, 1041);
             Controls.Add(flowLayoutPanel2);
             Controls.Add(flowLayoutPanel1);
             Controls.Add(Board);
@@ -1116,8 +1047,6 @@
             flowLayoutPanel5.PerformLayout();
             flowLayoutPanel6.ResumeLayout(false);
             flowLayoutPanel6.PerformLayout();
-            flowLayoutPanel8.ResumeLayout(false);
-            flowLayoutPanel7.ResumeLayout(false);
             flowLayoutPanel2.ResumeLayout(false);
             flowLayoutPanel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)Board).EndInit();
@@ -1172,9 +1101,6 @@
         private NumericUpDown sizeInput;
         private Label SizeLabel;
         private Label locationLabel;
-        private FlowLayoutPanel flowLayoutPanel7;
-        private Button ResetBtn;
-        private Button SaveBtn;
         private Label label1;
         private Label currentColor;
         private Button RightTriangleBtn;
@@ -1186,8 +1112,6 @@
         private Button TrapezBtn;
         private Button DroppperBtn;
         private ToolTip toolTip1;
-        private FlowLayoutPanel flowLayoutPanel8;
-        private Button uploadBtn;
         private Button ShortcutsBtn;
         private Button TypographyBtn;
         private FlowLayoutPanel flowLayoutPanel9;

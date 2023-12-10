@@ -39,23 +39,191 @@ namespace FinalPaint
             fillTools = new Tools[] { Tools.Line, Tools.Rectangle, Tools.Ellipse, Tools.Triangle, Tools.RightTriangle, Tools.Pentagon, Tools.Hexagon, Tools.Star, Tools.Romb, Tools.Trapez };
 
             p = new Pen(color, pencilSize);
+
+
+            MenuFile = new ToolStripMenuItem("File");
+
+
+            MenuFileOpen = new ToolStripMenuItem("Open image");
+            MenuFileOpen.Click += uploadBtn_Click;
+            MenuFileOpen.ShortcutKeys = Keys.Control | Keys.U;
+
+            MenuFileSave = new ToolStripMenuItem("Save");
+            MenuFileSave.Click += SaveBtn_Click;
+            MenuFileSave.ShortcutKeys = Keys.Control | Keys.S;
+
+
+            MenuFileExit = new ToolStripMenuItem("Exit");
+            MenuFileExit.Click += PaintApp_Leave;
+
+
+            ContextMenuFileSave = new ToolStripMenuItem("Save");
+            ContextMenuFileSave.Click += SaveBtn_Click;
+            ContextMenuFileSave.ShortcutKeys = Keys.Control | Keys.S;
+            ContextMenuFileSave.ShowShortcutKeys = true;
+
+
+            ContextMenuFileExit = new ToolStripMenuItem("Exit");
+            ContextMenuFileExit.Click += PaintApp_Leave;
+
+
+            MenuFile.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                MenuFileOpen,
+                new ToolStripSeparator(),
+                MenuFileSave,
+                new ToolStripSeparator(),
+                MenuFileExit
+            });
+
+
+            MenuEdit = new ToolStripMenuItem("&Edit");
+
+            MenuEditReset = new ToolStripMenuItem("&Reset");
+            MenuEditReset.ShortcutKeys = Keys.Control | Keys.R;
+            MenuEditReset.ShowShortcutKeys = true;
+            MenuEditReset.Click += ResetBtn_Click;
+
+            MenuEditUndo = new ToolStripMenuItem("&Undo");
+            MenuEditUndo.ShortcutKeys = Keys.Control | Keys.Z;
+            MenuEditUndo.ShowShortcutKeys = true;
+            MenuEditUndo.Click += UndoAction;
+
+
+            MenuEditRedo = new ToolStripMenuItem("&Redo");
+            MenuEditRedo.ShortcutKeys = Keys.Control | Keys.Y;
+            MenuEditRedo.ShowShortcutKeys = true;
+            MenuEditRedo.Click += RedoAction;
+
+            MenuEdit.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                MenuEditReset,
+                new ToolStripSeparator(),
+                MenuEditUndo,
+                new ToolStripSeparator(),
+                MenuEditRedo
+            });
+
+
+            ContextMenuFileOpen = new ToolStripMenuItem("Open image");
+            ContextMenuFileOpen.Click += uploadBtn_Click;
+            ContextMenuFileOpen.ShortcutKeys = Keys.Control | Keys.U;
+            ContextMenuFileOpen.ShowShortcutKeys = true;
+
+
+
+            ContextMenuFileUndo = new ToolStripMenuItem("Undo");
+            ContextMenuFileUndo.Click += UndoAction;
+            ContextMenuFileUndo.ShortcutKeys = Keys.Control | Keys.Z;
+            ContextMenuFileUndo.ShowShortcutKeys = true;
+
+            ContextMenuFileRedo = new ToolStripMenuItem("Redo");
+            ContextMenuFileRedo.Click += RedoAction;
+            ContextMenuFileRedo.ShortcutKeys = Keys.Control | Keys.Y;
+            ContextMenuFileRedo.ShowShortcutKeys = true;
+
+
+            ContextMenuFileReset = new ToolStripMenuItem("Reset");
+            ContextMenuFileReset.Click += ResetBtn_Click;
+            ContextMenuFileReset.ShortcutKeys = Keys.Control | Keys.R;
+            ContextMenuFileReset.ShowShortcutKeys = true;
+
+
+
+
+            MenuHelp = new ToolStripMenuItem("&Help");
+
+            MenuHelpAbout = new ToolStripMenuItem("&Shortcuts");
+            MenuHelpAbout.Click += ShortcutsBtn_Click;
+
+            MenuHelp.DropDownItems.AddRange(new ToolStripItem[]
+            {
+                MenuHelpAbout
+            });
+
+
+            ContextMenuFileAbout = new ToolStripMenuItem("About");
+            ContextMenuFileAbout.Click += ShortcutsBtn_Click;
+
+
+            MainMenu = new MenuStrip();
+
+            MainMenu.Items.AddRange(new ToolStripItem[]
+            {
+                MenuFile,
+                MenuEdit,
+                MenuHelp
+            });
+
+
+            ContextMenu = new ContextMenuStrip();
+
+
+            ContextMenu.Items.AddRange(new ToolStripItem[]
+            {
+
+                ContextMenuFileOpen,
+                new ToolStripSeparator(),
+                ContextMenuFileSave,
+                new ToolStripSeparator(),
+                ContextMenuFileUndo,
+                new ToolStripSeparator(),
+                ContextMenuFileRedo,
+                new ToolStripSeparator(),
+                ContextMenuFileReset,
+                new ToolStripSeparator(),
+                ContextMenuFileAbout,
+                new ToolStripSeparator(),
+                ContextMenuFileExit
+
+            });
+
+
+
+            this.Controls.Add(MainMenu);
+            this.ContextMenuStrip = ContextMenu;
+
         }
 
-        Bitmap bmp;
-        Color color;
-        Graphics g;
-        Control[] tools;
-        Point px, py;
-        Tools Tool, lastTool;
-        int pencilSize, size, x, y, cX, cY;
-        Pen p;
-        Tools[] sampleTools, fillTools;
-        bool isDrawing = false;
-        int keyCode = 0;
-        FontFamily fontFamily;
-        FontStyle fontStyle;
-        int fontSize;
-        Font font;
+        private Bitmap bmp;
+        private Color color;
+        private Graphics g;
+        private Control[] tools;
+        private Point px, py;
+        private Tools Tool, lastTool;
+        private int pencilSize, size, x, y, cX, cY;
+        private Pen p;
+        private Tools[] sampleTools, fillTools;
+        private bool isDrawing = false;
+        private int keyCode = 0;
+        private FontFamily fontFamily;
+        private FontStyle fontStyle;
+        private int fontSize;
+        private Font font;
+
+        private MenuStrip MainMenu;
+        private ToolStripMenuItem MenuFile;
+        private ToolStripMenuItem MenuFileOpen;
+        private ToolStripMenuItem MenuFileSave;
+        private ToolStripMenuItem MenuFileExit;
+
+        private ToolStripMenuItem ContextMenuFileOpen;
+        private ToolStripMenuItem ContextMenuFileSave;
+        private ToolStripMenuItem ContextMenuFileExit;
+        private ToolStripMenuItem ContextMenuFileUndo;
+        private ToolStripMenuItem ContextMenuFileRedo;
+        private ToolStripMenuItem ContextMenuFileReset;
+        private ToolStripMenuItem ContextMenuFileAbout;
+
+        private ToolStripMenuItem MenuEdit;
+        private ToolStripMenuItem MenuEditReset;
+        private ToolStripMenuItem MenuEditRedo;
+        private ToolStripMenuItem MenuEditUndo;
+
+        private ToolStripMenuItem MenuHelp;
+        private ToolStripMenuItem MenuHelpAbout;
+
+        private ContextMenuStrip ContextMenu;
 
 
         Stack<Bitmap> undoStack = new Stack<Bitmap>();
@@ -396,10 +564,7 @@ namespace FinalPaint
         }
 
 
-
-
-
-        private void PaintApp_Leave(object sender, CancelEventArgs e)
+        private void PaintApp_Leave(object sender, EventArgs e)
         {
 
             if (undoStack.Count == 0)
@@ -416,7 +581,10 @@ namespace FinalPaint
                 SaveBtn_Click(sender, e);
 
             }
-            e.Cancel = false;
+
+            CancelEventArgs cancelEvent = e as CancelEventArgs;
+
+            cancelEvent.Cancel = false;
 
         }
 
@@ -442,12 +610,9 @@ namespace FinalPaint
             toolTip1.SetToolTip(this.RombBtn, "Romb");
             toolTip1.SetToolTip(this.TrapezBtn, "Trapez");
             toolTip1.SetToolTip(this.DroppperBtn, "Dropper (Ctrl+D)");
-            toolTip1.SetToolTip(this.SaveBtn, "Save (Ctrl+S)");
-            toolTip1.SetToolTip(this.ResetBtn, "Reset (Ctrl+R)");
             toolTip1.SetToolTip(this.sizeInput, "Size (Ctrl +/-)");
             toolTip1.SetToolTip(this.currentColor, "Color");
             toolTip1.SetToolTip(this.customColor, "Custom Color (Ctrl+C)");
-            toolTip1.SetToolTip(this.uploadBtn, "Upload Image (Ctrl+U)");
             toolTip1.SetToolTip(this.ShortcutsBtn, "Help (Ctrl+?)");
         }
 
@@ -457,7 +622,7 @@ namespace FinalPaint
 
         }
 
-        private void UndoAction()
+        private void UndoAction(object sender, EventArgs e)
         {
 
             if (undoStack.Count > 0)
@@ -472,8 +637,7 @@ namespace FinalPaint
 
         }
 
-
-        private void RedoAction()
+        private void RedoAction(object sender, EventArgs e)
         {
 
             if (redoStack.Count > 0)
@@ -562,15 +726,11 @@ namespace FinalPaint
                         this.customColor_Click(sender, e);
                         break;
 
-
-
-
-
                     case Keys.Z:
-                        this.UndoAction();
+                        this.UndoAction(null, null);
                         break;
                     case Keys.Y:
-                        this.RedoAction();
+                        this.RedoAction(null, null);
                         break;
                     case Keys.S:
                         this.SaveBtn_Click(sender, e);
