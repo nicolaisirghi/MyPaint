@@ -3,7 +3,8 @@ namespace FinalPaint
 {
     internal class Utils
     {
-        static public ToolControl GetTool(Pen P, Tools Tool, int Size, Color Color, Point Start, Point End, Graphics G, Bitmap Bmp = null)
+        static public ToolControl GetTool(Pen P, Tools Tool, int Size, Color Color, Point Start, Point End, Graphics G,
+            Bitmap Bmp = null)
         {
             switch (Tool)
             {
@@ -32,11 +33,12 @@ namespace FinalPaint
                     return new Romb(P, Tool, Size, Color, Start, End, G);
                 case Tools.Trapez:
                     return new Trapez(P, Tool, Size, Color, Start, End, G);
+                case Tools.Selection:
+                    return new Selection(P, Tool, Size, Color, Start, End, G);
                 default:
-                    return new ToolControl(P,Tools.Default,Size,Color,Start,End,G);
+                    return new ToolControl(P, Tools.Default, Size, Color, Start, End, G);
             }
         }
-
     }
 }
 

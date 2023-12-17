@@ -1,7 +1,6 @@
 using System.ComponentModel;
 using System.Drawing.Imaging;
-
-
+using Rect = System.Drawing.Rectangle;
 
 namespace FinalPaint
 {
@@ -22,7 +21,7 @@ namespace FinalPaint
             Board.Image = bmp;
 
             FontFamily fontFamily = new FontFamily("Segoe UI");
-            Font font = new Font(fontFamily, 12, FontStyle.Regular);
+            font = new Font(fontFamily, 12, FontStyle.Regular);
 
             color = Color.Black;
             size = pencilSize = 1;
@@ -30,13 +29,21 @@ namespace FinalPaint
             Tool = Tools.Pencil;
             lastTool = Tools.Pencil;
 
-            tools = new Control[] { PencilBtn, EraserBtn, LineBtn, DroppperBtn, RectangleBtn, EllipseBtn, FillBtn, TriangleBtn, RightTriangleBtn, PentagonBtn, HexagonBtn, StarBtn, RombBtn, TrapezBtn, TypographyBtn };
+            tools = new Control[]
+            {
+                PencilBtn, EraserBtn, LineBtn, DroppperBtn, RectangleBtn, EllipseBtn, FillBtn, TriangleBtn,
+                RightTriangleBtn, PentagonBtn, HexagonBtn, StarBtn, RombBtn, TrapezBtn, TypographyBtn, selectionBtn
+            };
 
 
             PencilBtn.BackColor = Color.FromArgb(192, 255, 255);
             Board.Cursor = GetCursor(Properties.Resources.icons8_pencil_30);
             sampleTools = new Tools[] { Tools.Pencil, Tools.Eraser };
-            fillTools = new Tools[] { Tools.Line, Tools.Rectangle, Tools.Ellipse, Tools.Triangle, Tools.RightTriangle, Tools.Pentagon, Tools.Hexagon, Tools.Star, Tools.Romb, Tools.Trapez };
+            fillTools = new Tools[]
+            {
+                Tools.Line, Tools.Rectangle, Tools.Ellipse, Tools.Triangle, Tools.RightTriangle, Tools.Pentagon,
+                Tools.Hexagon, Tools.Star, Tools.Romb, Tools.Trapez, Tools.Selection
+            };
 
             p = new Pen(color, pencilSize);
 
@@ -111,7 +118,6 @@ namespace FinalPaint
             ContextMenuFileOpen.ShowShortcutKeys = true;
 
 
-
             ContextMenuFileUndo = new ToolStripMenuItem("Undo");
             ContextMenuFileUndo.Click += UndoAction;
             ContextMenuFileUndo.ShortcutKeys = Keys.Control | Keys.Z;
@@ -127,8 +133,6 @@ namespace FinalPaint
             ContextMenuFileReset.Click += ResetBtn_Click;
             ContextMenuFileReset.ShortcutKeys = Keys.Control | Keys.R;
             ContextMenuFileReset.ShowShortcutKeys = true;
-
-
 
 
             MenuHelp = new ToolStripMenuItem("&Help");
@@ -161,7 +165,6 @@ namespace FinalPaint
 
             ContextMenu.Items.AddRange(new ToolStripItem[]
             {
-
                 ContextMenuFileOpen,
                 new ToolStripSeparator(),
                 ContextMenuFileSave,
@@ -175,14 +178,10 @@ namespace FinalPaint
                 ContextMenuFileAbout,
                 new ToolStripSeparator(),
                 ContextMenuFileExit
-
             });
-
-
 
             this.Controls.Add(MainMenu);
             this.ContextMenuStrip = ContextMenu;
-
         }
 
         private Bitmap bmp;
@@ -200,6 +199,9 @@ namespace FinalPaint
         private FontStyle fontStyle;
         private int fontSize;
         private Font font;
+        private bool isSelected = false;
+        private Rect SelectionRect;
+
 
         private MenuStrip MainMenu;
         private ToolStripMenuItem MenuFile;
@@ -228,6 +230,7 @@ namespace FinalPaint
 
         Stack<Bitmap> undoStack = new Stack<Bitmap>();
         Stack<Bitmap> redoStack = new Stack<Bitmap>();
+        private int stackCounter = 0;
 
         private void Board_MouseDown(object sender, MouseEventArgs e)
         {
@@ -275,6 +278,9 @@ namespace FinalPaint
                 case Trapez trapez:
                     trapez.Draw();
                     break;
+                case Selection selection:
+                    selection.Draw();
+                    break;
             }
         }
 
@@ -285,7 +291,6 @@ namespace FinalPaint
                 px = e.Location;
 
 
-
                 if (Array.Exists(sampleTools, IsEqualTool))
                 {
                     int size = Tool == Tools.Pencil ? pencilSize : this.size;
@@ -293,13 +298,22 @@ namespace FinalPaint
                     ToolControl tool = Utils.GetTool(p, Tool, size, color, py, px, g);
                     Draw(tool);
 
-                    Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
-                    this.undoStack.Push(bitmap);
+                    Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height),
+                        bmp.PixelFormat);
+
+
+                    if (stackCounter == 40)
+                    {
+                        undoStack.Push(bitmap);
+                        stackCounter = 0;
+                    }
+                    else
+                    {
+                        stackCounter++;
+                    }
                 }
 
                 py = px;
-
-
             }
 
             Board.Refresh();
@@ -308,8 +322,6 @@ namespace FinalPaint
             y = e.Y;
 
             locationLabel.Text = "Location : {X=" + x + ", Y=" + y + "}";
-
-
         }
 
         private bool IsEqualTool(Tools tool)
@@ -327,12 +339,28 @@ namespace FinalPaint
                 ToolControl tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
                 Draw(tool);
 
-                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
+                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height),
+                    bmp.PixelFormat);
 
                 undoStack.Push(bitmap);
-
             }
 
+            if (Tool == Tools.Selection)
+            {
+                isSelected = true;
+
+
+                Point StartPosition = new Point(Math.Min(cX + 2, x - 2), Math.Min(cY + 2, y - 2));
+                Size size = new Size(Math.Abs(cX - x - 2), Math.Abs(cY - y - 2));
+
+
+                SelectionRect = new Rect(StartPosition, size);
+            }
+            else
+            {
+                isSelected = false;
+                SelectionRect = new Rect(0, 0, 0, 0);
+            }
         }
 
 
@@ -362,21 +390,30 @@ namespace FinalPaint
             {
                 ChangeSize();
             }
+
+            if (lastTool == Tools.Selection)
+            {
+                isSelected = false;
+                g.DrawRectangle(new Pen(Color.White, 3), SelectionRect);
+            }
+
+            if (lastTool == Tools.Typography)
+            {
+                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height),
+                    bmp.PixelFormat);
+
+                undoStack.Push(bitmap);            }
         }
 
         private void RightTriangleBtn_Click(object sender, EventArgs e)
         {
-
             ChangeTool(Tools.RightTriangle, Cursors.Cross);
-
         }
 
         private void PencilBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Pencil, GetCursor(Properties.Resources.icons8_pencil_30), false);
             sizeInput.Value = pencilSize;
-
-
         }
 
         private void EraserBtn_Click(object sender, EventArgs e)
@@ -402,7 +439,6 @@ namespace FinalPaint
         private void FillBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Fill, GetCursor(Properties.Resources.icons8_fill_color_30));
-
         }
 
         private void Triangle_Click(object sender, EventArgs e)
@@ -423,7 +459,6 @@ namespace FinalPaint
         private void StarBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Star, Cursors.Cross);
-
         }
 
         private void RombBtn_Click(object sender, EventArgs e)
@@ -449,14 +484,12 @@ namespace FinalPaint
             {
                 ToolControl tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
                 Draw(tool);
-
             }
         }
 
 
         private void Board_Click(object sender, EventArgs e)
         {
-
             if (Tool == Tools.Fill)
             {
                 MouseEventArgs me = (MouseEventArgs)e;
@@ -464,10 +497,11 @@ namespace FinalPaint
                 new Fill(p, Tools.Fill, 1, color, me.Location, new Point(x, y), g, bmp).Draw();
 
 
-                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
+                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height),
+                    bmp.PixelFormat);
                 this.undoStack.Push(bitmap);
-
             }
+
             if (Tool == Tools.Dropper)
             {
                 MouseEventArgs me = (MouseEventArgs)e;
@@ -478,19 +512,22 @@ namespace FinalPaint
 
             if (Tool == Tools.Typography)
             {
-                new Typography(p, Tools.Typography, size, color, new Point(x, y), new Point(x, y), g, Board, font).Draw();
+                new Typography(p, Tools.Typography, size, color, new Point(x, y), new Point(x, y), g, Board, font)
+                    .Draw();
             }
 
+            if (Tool == Tools.Selection)
+            {
+                isSelected = false;
+                g.DrawRectangle(new Pen(Color.White, 3), SelectionRect);
+            }
         }
 
 
-
-        private void TypoaphyBtn_Click(object sender, EventArgs e)
+        private void TypographyBtn_Click(object sender, EventArgs e)
         {
             ChangeTool(Tools.Typography, Cursors.IBeam);
-
         }
-
 
 
         private void sizeInput_ValueChanged(object sender, EventArgs e)
@@ -516,7 +553,6 @@ namespace FinalPaint
 
             currentColor.BackColor = color;
             currentColor.ForeColor = color;
-
         }
 
         private void SetActiveTool()
@@ -529,9 +565,7 @@ namespace FinalPaint
                     c.BackColor = Color.FromArgb(192, 255, 255);
                 }
             }
-
         }
-
 
 
         private void customColor_Click(object sender, EventArgs e)
@@ -549,12 +583,11 @@ namespace FinalPaint
             sfd.Filter = "JPEG|*.jpg";
             if (sfd.ShowDialog() == DialogResult.OK)
             {
-
-                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height), bmp.PixelFormat);
+                Bitmap bitmap = bmp.Clone(new System.Drawing.Rectangle(0, 0, Board.Width, Board.Height),
+                    bmp.PixelFormat);
                 bmp.Save(sfd.FileName, ImageFormat.Jpeg);
                 MessageBox.Show("Image Saved Successfully");
             }
-
         }
 
         private void ResetBtn_Click(object sender, EventArgs e)
@@ -566,7 +599,6 @@ namespace FinalPaint
 
         private void PaintApp_Leave(object sender, EventArgs e)
         {
-
             if (undoStack.Count == 0)
             {
                 return;
@@ -579,13 +611,11 @@ namespace FinalPaint
             if (result == DialogResult.Yes)
             {
                 SaveBtn_Click(sender, e);
-
             }
 
             CancelEventArgs cancelEvent = e as CancelEventArgs;
 
             cancelEvent.Cancel = false;
-
         }
 
         private void DroppperBtn_Click(object sender, EventArgs e)
@@ -619,66 +649,67 @@ namespace FinalPaint
         private void PaintApp_Load(object sender, EventArgs e)
         {
             SetTooltip();
-
         }
 
         private void UndoAction(object sender, EventArgs e)
         {
-
             if (undoStack.Count > 0)
             {
                 redoStack.Push(new Bitmap(bmp, Board.Width, Board.Height));
                 bmp = undoStack.Pop();
                 g = Graphics.FromImage(bmp);
                 Board.Image = bmp;
-
-
             }
-
         }
 
         private void RedoAction(object sender, EventArgs e)
         {
-
             if (redoStack.Count > 0)
             {
-
                 undoStack.Push(new Bitmap(bmp, Board.Width, Board.Height));
                 bmp = redoStack.Pop();
                 g = Graphics.FromImage(bmp);
                 Board.Image = bmp;
-
             }
-
-
-
         }
 
         private void HelpBtn_Click(object sender, EventArgs e)
         {
-
             MessageBox.Show(
-
                 "Keyboard Shortcuts:\n\n" +
                 "Ctrl + P - Pencil\n" +
                 "Ctrl + E - Eraser\n" +
                 "Ctrl + F - Fill\n" +
                 "Ctrl + D - Dropper\n" +
                 "Ctrl + L - Line\n\n\n" +
-
-
                 "Ctrl + Plus - Increase Size\n" +
                 "Ctrl + Minus - Decrease Size\n" +
                 "Ctrl + C - Custom Color\n\n\n" +
-
                 "Ctrl + Z - Undo\n" +
                 "Ctrl + Y - Redo\n" +
                 "Ctrl + S - Save\n" +
                 "Ctrl + R - Reset\n" +
                 "Ctrl + U - Upload\n\n\n" +
-
                 "Ctrl + ? - Help\n"
-                );
+            );
+        }
+
+        private void PasteImage()
+        {
+            if (Clipboard.ContainsImage())
+            {
+                Bitmap bitmap = (Bitmap)Clipboard.GetImage();
+                g.DrawImage(bitmap, cX, cY);
+            }
+        }
+
+        private void CopyImage()
+        {
+            if (isSelected)
+            {
+                Bitmap bitmap = bmp.Clone(SelectionRect, bmp.PixelFormat);
+                Clipboard.SetImage(bitmap);
+            }
         }
 
 
@@ -723,7 +754,7 @@ namespace FinalPaint
 
 
                     case Keys.C:
-                        this.customColor_Click(sender, e);
+                        this.CopyImage();
                         break;
 
                     case Keys.Z:
@@ -744,18 +775,18 @@ namespace FinalPaint
                     case Keys.U:
                         this.uploadBtn_Click(sender, e);
                         break;
+                    case Keys.V:
+                        this.PasteImage();
+                        break;
+                    case Keys.Delete:
+                        g.FillRectangle(new SolidBrush(Color.White), SelectionRect);
+                        break;
                     default:
                         keyCode = 0;
                         break;
                 }
-
-
-
             }
-
         }
-
-
 
 
         private void uploadBtn_Click(object sender, EventArgs e)
@@ -764,7 +795,6 @@ namespace FinalPaint
             ofd.Filter = "JPEG|*.jpg";
             if (ofd.ShowDialog() == DialogResult.OK)
             {
-
                 Bitmap bitmap = new Bitmap(ofd.FileName);
                 bitmap = new Bitmap(bitmap, Board.Width, Board.Height);
                 bmp = bitmap;
@@ -781,16 +811,13 @@ namespace FinalPaint
 
         private void PaintApp_SizeChanged(object sender, EventArgs e)
         {
-
             this.bmp = new Bitmap(bmp, Board.Width, Board.Height);
             g = Graphics.FromImage(bmp);
             Board.Image = bmp;
-
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void changeFont_btn_Click(object sender, EventArgs e)
         {
-
             FontDialog fd = new FontDialog();
             if (fd.ShowDialog() == DialogResult.OK)
             {
@@ -798,9 +825,12 @@ namespace FinalPaint
                 fontSizeLabel.Text = font.Size.ToString();
                 fontFamilyLabel.Text = font.FontFamily.Name;
                 fontStyleLabel.Text = font.Style.ToString();
-
             }
+        }
 
+        private void selectionBtn_Click(object sender, EventArgs e)
+        {
+            ChangeTool(Tools.Selection, Cursors.Cross);
         }
     }
 }

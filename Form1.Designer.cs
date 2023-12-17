@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PaintApp));
             flowLayoutPanel1 = new FlowLayoutPanel();
             flowLayoutPanel3 = new FlowLayoutPanel();
+            selectionBtn = new Button();
             PencilBtn = new Button();
             FillBtn = new Button();
             TypographyBtn = new Button();
@@ -128,8 +129,9 @@
             flowLayoutPanel3.BorderStyle = BorderStyle.FixedSingle;
             flowLayoutPanel3.Controls.Add(PencilBtn);
             flowLayoutPanel3.Controls.Add(FillBtn);
-            flowLayoutPanel3.Controls.Add(TypographyBtn);
             flowLayoutPanel3.Controls.Add(EraserBtn);
+            flowLayoutPanel3.Controls.Add(selectionBtn);
+            flowLayoutPanel3.Controls.Add(TypographyBtn);
             flowLayoutPanel3.Controls.Add(DroppperBtn);
             flowLayoutPanel3.Controls.Add(ToolsLabel);
             flowLayoutPanel3.Location = new Point(10, 3);
@@ -138,6 +140,25 @@
             flowLayoutPanel3.Padding = new Padding(17, 0, 0, 0);
             flowLayoutPanel3.Size = new Size(154, 125);
             flowLayoutPanel3.TabIndex = 6;
+            // 
+            // selectionBtn
+            // 
+            selectionBtn.BackColor = Color.FromArgb(224, 224, 224);
+            selectionBtn.BackgroundImage = (Image)resources.GetObject("selectionBtn.BackgroundImage");
+            selectionBtn.BackgroundImageLayout = ImageLayout.Center;
+            selectionBtn.Cursor = Cursors.Hand;
+            selectionBtn.FlatAppearance.BorderColor = Color.FromArgb(224, 224, 224);
+            selectionBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
+            selectionBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
+            selectionBtn.FlatStyle = FlatStyle.Flat;
+            selectionBtn.Location = new Point(17, 47);
+            selectionBtn.Margin = new Padding(0, 5, 3, 0);
+            selectionBtn.Name = "selectionBtn";
+            selectionBtn.Size = new Size(36, 32);
+            selectionBtn.TabIndex = 15;
+            selectionBtn.Tag = "Selection";
+            selectionBtn.UseVisualStyleBackColor = false;
+            selectionBtn.Click += selectionBtn_Click;
             // 
             // PencilBtn
             // 
@@ -149,8 +170,8 @@
             PencilBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             PencilBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             PencilBtn.FlatStyle = FlatStyle.Flat;
-            PencilBtn.Location = new Point(37, 10);
-            PencilBtn.Margin = new Padding(20, 10, 3, 3);
+            PencilBtn.Location = new Point(17, 10);
+            PencilBtn.Margin = new Padding(0, 10, 3, 3);
             PencilBtn.Name = "PencilBtn";
             PencilBtn.Size = new Size(36, 29);
             PencilBtn.TabIndex = 0;
@@ -168,7 +189,7 @@
             FillBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             FillBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             FillBtn.FlatStyle = FlatStyle.Flat;
-            FillBtn.Location = new Point(79, 10);
+            FillBtn.Location = new Point(59, 10);
             FillBtn.Margin = new Padding(3, 10, 3, 3);
             FillBtn.Name = "FillBtn";
             FillBtn.Size = new Size(36, 29);
@@ -187,14 +208,14 @@
             TypographyBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             TypographyBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             TypographyBtn.FlatStyle = FlatStyle.Flat;
-            TypographyBtn.Location = new Point(17, 47);
+            TypographyBtn.Location = new Point(56, 47);
             TypographyBtn.Margin = new Padding(0, 5, 3, 3);
             TypographyBtn.Name = "TypographyBtn";
             TypographyBtn.Size = new Size(36, 29);
             TypographyBtn.TabIndex = 11;
             TypographyBtn.Tag = "Typography";
             TypographyBtn.UseVisualStyleBackColor = false;
-            TypographyBtn.Click += TypoaphyBtn_Click;
+            TypographyBtn.Click += TypographyBtn_Click;
             // 
             // EraserBtn
             // 
@@ -206,8 +227,8 @@
             EraserBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             EraserBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             EraserBtn.FlatStyle = FlatStyle.Flat;
-            EraserBtn.Location = new Point(61, 47);
-            EraserBtn.Margin = new Padding(5, 5, 3, 3);
+            EraserBtn.Location = new Point(101, 10);
+            EraserBtn.Margin = new Padding(3, 10, 3, 3);
             EraserBtn.Name = "EraserBtn";
             EraserBtn.Size = new Size(36, 29);
             EraserBtn.TabIndex = 9;
@@ -225,7 +246,7 @@
             DroppperBtn.FlatAppearance.MouseDownBackColor = Color.FromArgb(192, 255, 255);
             DroppperBtn.FlatAppearance.MouseOverBackColor = Color.FromArgb(192, 255, 255);
             DroppperBtn.FlatStyle = FlatStyle.Flat;
-            DroppperBtn.Location = new Point(103, 47);
+            DroppperBtn.Location = new Point(98, 47);
             DroppperBtn.Margin = new Padding(3, 5, 3, 3);
             DroppperBtn.Name = "DroppperBtn";
             DroppperBtn.Size = new Size(36, 29);
@@ -339,7 +360,7 @@
             changeTextBtn.TabIndex = 23;
             changeTextBtn.Text = "Change ..";
             changeTextBtn.UseVisualStyleBackColor = true;
-            changeTextBtn.Click += button1_Click;
+            changeTextBtn.Click += changeFont_btn_Click;
             // 
             // TypographyLabel
             // 
@@ -1123,5 +1144,6 @@
         private Label label3;
         private Label fontSizeLabel;
         private Button changeTextBtn;
+        private Button selectionBtn;
     }
 }

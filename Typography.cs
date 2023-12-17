@@ -37,13 +37,14 @@
             textBox.Dispose();
             textBox = null;
 
-            Label label = new Label();
-            label.Location = Start;
-            label.Text = text;
-            label.Font = Font;
-            label.AutoSize = true;
-            control.Controls.Add(label);
+            // Label label = new Label();
+            // label.Location = Start;
+            // label.Text = text;
+            // label.Font = Font;
+            // label.AutoSize = true;
+            // control.Controls.Add(label);
 
+            G.DrawString(text,Font,new SolidBrush(Color),Start);
 
         }
 

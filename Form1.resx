@@ -118,6 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="selectionBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
+        DAAACwwBP0AiyAAAALBJREFUWEft1j0KwkAQhuGt1Vuop7AW1F7wNtbiEfxpBY+iB1F7rfV9U5qQapek
+        mA+eYskwO7BFJkUifcwUe1wzumCLCVqzwgffQt5YojEDvGDhARusM7HXEfZ+YoRaZrDgVp3K5A7vmFen
+        vzipH32zUrG3d3hXLTFADBADxAAxQAzQ+QCd/45dSFwWLDgh90Jyhr0fGKIxrmSuTRaWYO8FWuPiuIPv
+        lZM9x4hE+pSUfoHupX98ZtsfAAAAAElFTkSuQmCC
+</value>
+  </data>
   <data name="TriangleBtn.BackgroundImage" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAL
