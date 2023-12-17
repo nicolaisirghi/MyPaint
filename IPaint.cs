@@ -1,7 +1,6 @@
-﻿namespace FinalPaint
+﻿namespace FinalPaint;
+
+internal interface Paint
 {
-    internal interface Paint
-    {
-         void Draw();
-    }
+    void Draw();
 }

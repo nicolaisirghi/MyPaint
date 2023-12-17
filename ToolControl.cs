@@ -1,44 +1,35 @@
-﻿namespace FinalPaint
+﻿namespace FinalPaint;
+
+internal class ToolControl : Paint
 {
-    internal class ToolControl : Paint
+    protected Bitmap Bmp;
+    protected Color Color;
+    protected Point End;
+    protected Graphics G;
+    protected Pen P;
+    protected int Size;
+    protected Point Start;
+    protected Tools Tool;
+
+
+    public ToolControl(Pen p, Tools tool, int size, Color color, Point start, Point end, Graphics g, Bitmap bmp = null)
     {
-        protected Tools Tool;
-        protected Pen P;
-        protected Graphics G;
-        protected int Size;
-        protected Color Color;
-        protected Point Start;
-        protected Point End;
-        protected Bitmap Bmp;
+        P = p;
+        Tool = tool;
+        Size = size;
+        Color = color;
+        Start = start;
+        End = end;
+        G = g;
+        Bmp = bmp;
+
+        p.Color = color;
+        p.Width = size;
+    }
 
 
-
-        public ToolControl(Pen p, Tools tool, int size, Color color, Point start, Point end, Graphics g, Bitmap bmp = null)
-        {
-            P = p;
-            Tool = tool;
-            Size = size;
-            Color = color;
-            Start = start;
-            End = end;
-            G = g;
-            Bmp = bmp;
-
-            p.Color = color;
-            p.Width = size;
-        }
-
-
-
-
-        public void Draw()
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-
+    public void Draw()
+    {
+        throw new NotImplementedException();
     }
 }
