@@ -28,6 +28,7 @@ public partial class PaintApp : Form
     private bool isSelected;
     private int keyCode;
 
+    private int counter = 0;
 
     private readonly MenuStrip MainMenu;
 
@@ -240,10 +241,13 @@ public partial class PaintApp : Form
 
     private void Board_MouseDown(object sender, MouseEventArgs e)
     {
-        isDrawing = true;
-        py = e.Location;
-        cX = e.X;
-        cY = e.Y;
+        if ((e.Button & MouseButtons.Left) != 0)
+        {
+            isDrawing = true;
+            py = e.Location;
+            cX = e.X;
+            cY = e.Y;
+        }
     }
 
 
@@ -320,6 +324,8 @@ public partial class PaintApp : Form
             }
 
             py = px;
+
+            
         }
 
         Board.Refresh();
@@ -338,33 +344,34 @@ public partial class PaintApp : Form
     private void Board_MouseUp(object sender, MouseEventArgs e)
     {
         isDrawing = false;
-
-
-        if (Array.Exists(fillTools, IsEqualTool))
+        if (e.Button == MouseButtons.Left)
         {
-            var tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
-            Draw(tool);
+            if (Array.Exists(fillTools, IsEqualTool))
+            {
+                var tool = Utils.GetTool(p, Tool, size, color, new Point(cX, cY), new Point(x, y), g);
+                Draw(tool);
 
-            var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height),
-                bmp.PixelFormat);
+                var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height),
+                    bmp.PixelFormat);
 
-            undoStack.Push(bitmap);
-        }
+                undoStack.Push(bitmap);
+            }
 
-        if (Tool == Tools.Selection)
-        {
-            isSelected = true;
+            if (Tool == Tools.Selection)
+            {
+                isSelected = true;
 
 
-            var StartPosition = new Point(Math.Min(cX, x), Math.Min(cY, y));
-            var size = new Size(Math.Abs(cX - x), Math.Abs(cY - y));
+                var StartPosition = new Point(Math.Min(cX, x), Math.Min(cY, y));
+                var size = new Size(Math.Abs(cX - x), Math.Abs(cY - y));
 
-            SelectionRect = new Rect(StartPosition, size);
-        }
-        else
-        {
-            isSelected = false;
-            SelectionRect = new Rect(0, 0, 0, 0);
+                SelectionRect = new Rect(StartPosition, size);
+            }
+            else
+            {
+                isSelected = false;
+                SelectionRect = new Rect(0, 0, 0, 0);
+            }
         }
     }
 
@@ -693,7 +700,7 @@ public partial class PaintApp : Form
 
     private void CopyImage()
     {
-        if (isSelected)
+        if (isSelected && SelectionRect.Width > 2 && SelectionRect.Height > 2)
         {
             var bitmap =
                 bmp.Clone(
@@ -702,7 +709,7 @@ public partial class PaintApp : Form
                     bmp.PixelFormat);
             Clipboard.SetImage(bitmap);
         }
-        else
+        else if (!isSelected)
         {
             var bitmap = bmp.Clone(new Rect(0, 0, Board.Width, Board.Height),
                 bmp.PixelFormat);
@@ -774,8 +781,7 @@ public partial class PaintApp : Form
                     PasteImage();
                     break;
                 case Keys.Delete:
-                    g.FillRectangle(new SolidBrush(Color.White), SelectionRect);
-                    Board.Image = bmp;
+                    RemoveSelection();
                     break;
                 default:
                     keyCode = 0;
@@ -783,6 +789,12 @@ public partial class PaintApp : Form
             }
     }
 
+
+    private void RemoveSelection()
+    {
+        g.FillRectangle(new SolidBrush(Color.White), SelectionRect);
+        Board.Image = bmp;
+    }
 
     private void uploadBtn_Click(object sender, EventArgs e)
     {
