@@ -132,7 +132,6 @@ public partial class PaintApp : Form
             new ToolStripSeparator(),
             MenuFileSave,
             new ToolStripSeparator(),
-            MenuFileExit
         });
 
 
@@ -637,7 +636,6 @@ public partial class PaintApp : Form
         toolTip1.SetToolTip(DroppperBtn, "Dropper (Ctrl+D)");
         toolTip1.SetToolTip(sizeInput, "Size (Ctrl +/-)");
         toolTip1.SetToolTip(currentColor, "Color");
-        toolTip1.SetToolTip(customColor, "Custom Color (Ctrl+C)");
         toolTip1.SetToolTip(ShortcutsBtn, "Help (Ctrl+?)");
     }
 
@@ -679,7 +677,7 @@ public partial class PaintApp : Form
             "Ctrl + L - Line\n\n\n" +
             "Ctrl + Plus - Increase Size\n" +
             "Ctrl + Minus - Decrease Size\n" +
-            "Ctrl + C - Custom Color\n\n\n" +
+            "Ctrl + C - Copy Paste\n\n\n" +
             "Ctrl + Z - Undo\n" +
             "Ctrl + Y - Redo\n" +
             "Ctrl + S - Save\n" +
@@ -818,9 +816,18 @@ public partial class PaintApp : Form
 
     private void PaintApp_SizeChanged(object sender, EventArgs e)
     {
-        bmp = new Bitmap(bmp, Board.Width, Board.Height);
-        g = Graphics.FromImage(bmp);
-        Board.Image = bmp;
+        try
+        {
+            bmp = new Bitmap(bmp, Board.Width, Board.Height);
+            g = Graphics.FromImage(bmp);
+            Board.Image = bmp;
+
+        }
+        catch(Exception ex)
+        {
+
+        }
+     
     }
 
     private void changeFont_btn_Click(object sender, EventArgs e)
